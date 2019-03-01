@@ -15,6 +15,7 @@ class Header extends React.Component {
     }
     this.toggleAddTransactionForm = this.toggleAddTransactionForm.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
+    this.addTransaction = this.addTransaction.bind(this);
   }
   
   toggleMenu(){
@@ -22,6 +23,11 @@ class Header extends React.Component {
   }
   
   toggleAddTransactionForm(){
+    this.setState({showAddTransactionForm: !this.state.showAddTransactionForm})
+  }
+  
+  addTransaction(){
+    console.log()
     this.setState({showAddTransactionForm: !this.state.showAddTransactionForm})
   }
   
@@ -42,6 +48,7 @@ class Header extends React.Component {
         />
         <AddTransactionForm
           showAddTransactionForm={this.state.showAddTransactionForm}
+          addTransaction={this.addTransaction}
         />
       </div>
     );
