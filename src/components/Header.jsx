@@ -24,7 +24,7 @@ class Header extends React.Component {
   
   render() {
     return (
-      <div>
+      <div className='heading'>
         <div onClick={this.toggleMenu} className='menuTabBox'>
           <div className='menuTab tab1'></div>
           <div className='menuTab tab2'></div>
