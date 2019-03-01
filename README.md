@@ -10,6 +10,9 @@ This is a budgeting app where users can create a budget and track transactions.
 
 ## Site Plan
 
+<img src="src/components/assets/images/structure.png" width="450" title="Component Structure">
+
+
 ## Setup/Installation Requirements
 
 * Clone this project with `git clone https://github.com/klowe27/intentional-money`
