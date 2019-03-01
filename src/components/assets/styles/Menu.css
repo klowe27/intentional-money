@@ -5,8 +5,8 @@
 
 .menu {
   position: fixed;
-  right: 0px;
-  background-color: rgba(255, 255, 255, .9);
+  left: 0px;
+  background-color: rgba(200, 200, 200, .9);
   animation: menuAnimation 1s ease alternate;
   z-index: 15;
   margin-top: -80px;
