@@ -11,7 +11,7 @@ function CategoryList(){
           name={category.name}
           budget={category.budget}
           activity={category.activity}
-          remaining={category.activity}
+          remaining={category.remaining}
           key={v4()}/>
       )}
     </div>
