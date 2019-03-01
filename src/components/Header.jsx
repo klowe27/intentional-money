@@ -1,5 +1,8 @@
 import React from 'react';
-import Button from './Button'
+import Button from './Button';
+import MenuTab from './MenuTab';
+import Menu from './Menu';
+import AddTransactionForm from './AddTransactionForm'
 import { Link } from 'react-router-dom';
 import './assets/styles/Header.css';
 
@@ -25,14 +28,20 @@ class Header extends React.Component {
   render() {
     return (
       <div className='heading'>
-        <div onClick={this.toggleMenu} className='menuTabBox'>
-          <div className='menuTab tab1'></div>
-          <div className='menuTab tab2'></div>
-        </div>
+        <MenuTab
+          toggleMenu={this.toggleMenu}
+          showMenu={this.state.showMenu}
+         />
+        <Menu
+          showMenu={this.state.showMenu}
+        />
         <h1>Intentional Money</h1>
         <Button 
           action={this.toggleAddTransactionForm}
           name="+ transaction"
+        />
+        <AddTransactionForm
+          showAddTransactionForm={this.state.showAddTransactionForm}
         />
       </div>
     );
