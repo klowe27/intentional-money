@@ -67,3 +67,27 @@ button:hover{
   border-style: none;
   box-shadow: 0 5px 15px rgba(145, 92, 182, .5);
 }
+
+.container {
+  margin-top: 65px;
+}
+
+.form {
+  background-color: gray;
+  padding: 1rem;
+  width: 400px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 15%;
+}
+
+.close {
+  font-size: 1.5rem;
+  color: white;
+  float: right;
+  font-weight: lighter;
+}
+
+.close:hover {
+  color: black;
+}
