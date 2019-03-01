@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 import MenuTab from './MenuTab';
 import Menu from './Menu';
-import AddTransactionForm from './AddTransactionForm'
+import AddTransactionForm from './AddTransactionForm';
 import { Link } from 'react-router-dom';
 import './assets/styles/Header.css';
 
@@ -12,22 +12,22 @@ class Header extends React.Component {
     this.state = {
       showAddTransactionForm: false,
       showMenu: false
-    }
+    };
     this.toggleAddTransactionForm = this.toggleAddTransactionForm.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
     this.addTransaction = this.addTransaction.bind(this);
   }
   
   toggleMenu(){
-    this.setState({showMenu: !this.state.showMenu})
+    this.setState({showMenu: !this.state.showMenu});
   }
   
   toggleAddTransactionForm(){
-    this.setState({showAddTransactionForm: !this.state.showAddTransactionForm})
+    this.setState({showAddTransactionForm: !this.state.showAddTransactionForm});
   }
   
   addTransaction(){
-    this.setState({showAddTransactionForm: !this.state.showAddTransactionForm})
+    this.setState({showAddTransactionForm: !this.state.showAddTransactionForm});
   }
   
   render() {
@@ -36,7 +36,7 @@ class Header extends React.Component {
         <MenuTab
           toggleMenu={this.toggleMenu}
           showMenu={this.state.showMenu}
-         />
+        />
         <Menu
           showMenu={this.state.showMenu}
         />

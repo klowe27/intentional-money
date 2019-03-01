@@ -15,14 +15,14 @@ class AddTransactionForm extends React.Component {
     this.state = {
       category: null,
       account: null,
-      expense: null,
+      type: null,
       cleared: null
-    }
+    };
     this.handleAddTransaction = this.handleAddTransaction.bind(this);
-    this.selectCategory = this.selectCategory.bind(this);
-    this.selectAccount = this.selectAccount.bind(this);
-    this.selectType = this.selectType.bind(this);
-    this.selectCleared = this.selectCleared.bind(this);
+    this.handleSelectCategory = this.handleSelectCategory.bind(this);
+    this.handleSelectAccount = this.handleSelectAccount.bind(this);
+    this.handleSelectType = this.handleSelectType.bind(this);
+    this.handleSelectCleared = this.handleSelectCleared.bind(this);
 
   }
   
@@ -39,19 +39,19 @@ class AddTransactionForm extends React.Component {
     this.props.toggleAddTransactionForm();
   }
   
-  selectCategory(e){
+  handleSelectCategory(e){
     this.setState({category: e.target.value});
   }
   
-  selectAccount(e){
+  handleSelectAccount(e){
     this.setState({account: e.target.value});
   }
   
-  selectType(e){
+  handleSelectType(e){
     this.setState({type: e.target.value});
   }
   
-  selectCleared(e){
+  handleSelectCleared(e){
     this.setState({cleared: e.target.value});
   }
   
@@ -59,7 +59,7 @@ class AddTransactionForm extends React.Component {
     if (!this.props.showAddTransactionForm){
       return(
         null
-      )
+      );
     } else {
       return (
         <div className='modal-background'> 
@@ -91,15 +91,15 @@ class AddTransactionForm extends React.Component {
             </div>
             <div className='form-group'>
               <label for='account'>Account</label>
-              <select onChange={this.selectAccount} required>
+              <select onChange={this.handleSelectAccount} required>
                 <option value=""></option>
                 <option value="checking">Checking</option>
                 <option value="savings">Savings</option>
-               </select>
+              </select>
             </div>
             <div className='form-group'>
               <label for='category'>Category</label>
-              <select onChange={this.selectCategory} required>
+              <select onChange={this.handleSelectCategory} required>
                 <option value=""></option>
                 <option value="groceries">Groceries</option>
                 <option value="transportation">Transportation</option>
@@ -116,20 +116,20 @@ class AddTransactionForm extends React.Component {
             </div>
             <div className='form-group'>
               <label for='type'>Transaction Type</label>
-              <select onChange={this.selectType} required>
+              <select onChange={this.handleSelectType} required>
                 <option value=""></option>
                 <option value="true">Expense</option>
                 <option value="false">Income</option>
-               </select>
+              </select>
             </div>
             <div className='form-group'>
-               <label for='cleared'>Cleared?</label>
-               <select onChange={this.selectCleared} required>
-                 <option value=""></option>
-                 <option value="true">Yes</option>
-                 <option value="false">No</option>
-                </select>
-              </div>
+              <label for='cleared'>Cleared?</label>
+              <select onChange={this.handleSelectCleared} required>
+                <option value=""></option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
             <button type='submit'>Add</button>
           </form>
         </div>
@@ -142,6 +142,6 @@ AddTransactionForm.propTypes = {
   showAddTransactionForm: PropTypes.boolean,
   addTransaction: PropTypes.func,
   toggleAddTransactionForm: PropTypes.func
-}
+};
 
 export default AddTransactionForm;

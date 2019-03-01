@@ -8,7 +8,7 @@ function Menu({showMenu}) {
   if (!showMenu) {
     return (
       null
-    )
+    );
   } else {
     return (
       <div className='menu'>
@@ -16,12 +16,12 @@ function Menu({showMenu}) {
         <Link to='/budget'><div className='menu-item'>Budget</div></Link>
         <Link to='/accounts'><div className='menu-item'>Accounts</div></Link>
       </div>
-    )
+    );
   }  
 }
 
 Menu.propTypes = {
   showMenu: PropTypes.boolean
-}
+};
 
 export default Menu;
