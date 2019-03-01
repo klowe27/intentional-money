@@ -1,0 +1,39 @@
+.menuTabBox {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 80px;
+  height: 65px;
+  z-index: 29;
+}
+
+.menuTabBox:hover {
+  background-color: #1f1f1f;
+}
+
+.menuTab {
+  position: fixed;
+  left: 30px;
+  background-color: gray;
+  width: 21px;
+  height: 3px;
+  z-index: 30;
+}
+
+.tab1 {
+  top: 25px;
+}
+
+.tab2 {
+  top: 33px;
+}
+
+.x1 {
+  transform: rotate(45deg);
+  top: 29px;
+}
+
+.x2 {
+  transform: rotate(-45deg);
+  top: 29px;
+}
