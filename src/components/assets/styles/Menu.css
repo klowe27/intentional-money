@@ -6,7 +6,7 @@
 .menu {
   position: fixed;
   left: 0px;
-  background-color: rgba(200, 200, 200, .9);
+  background-color: rgba(0, 0, 0, .9);
   animation: menuAnimation 1s ease alternate;
   z-index: 15;
   margin-top: -80px;
@@ -16,12 +16,11 @@
 
 .menu-top {
   width: 100%;
-  background-color: #1f1f1f;
-  height: 65px;
+  height: 150px;
 }
 
 .menu-item {
-  color: black;
+  color: white;
   padding: 20px 0px 15px 0px;
   font-size: 30px;
   font-weight: lighter;

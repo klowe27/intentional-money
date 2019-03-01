@@ -1,10 +1,15 @@
 html {
   font-size: 14px;
-  font-family: Helvetica;
+  font-family: Helvetica Neue;
+  font-spacing: 1px;
 }
 
 body {
   margin: 0px;
+}
+
+h2 {
+  font-weight: lighter;
 }
 
 .modal-background {
@@ -33,10 +38,32 @@ input {
   border-style: none;
 }
 
-option {
-  width: auto;
+select {
+  width: 200px;
   padding: 5px;
   border-radius: 5px;
-  height: 20px;
-  display: block;
+  height: 30px;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  padding: 12px;
+  border: solid 1px #277179;
+  background-color: white;
+  color: #277179;
+  font-weight: lighter;
+  font-size: 1rem;
+  border-radius: 5px;
+  width: 175px;
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .2);
+}
+
+button:hover{
+  background-color: black;
+  color: white;
+  border-style: none;
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .5);
 }

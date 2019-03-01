@@ -41,10 +41,12 @@ class Header extends React.Component {
           showMenu={this.state.showMenu}
         />
         <h1>Intentional Money</h1>
-        <Button 
-          action={this.toggleAddTransactionForm}
-          name="+ transaction"
-        />
+        <div className='addTransactionButton'>
+          <Button 
+            action={this.toggleAddTransactionForm}
+            name="+ transaction"
+          />
+        </div>
         <AddTransactionForm
           showAddTransactionForm={this.state.showAddTransactionForm}
           toggleAddTransactionForm={this.toggleAddTransactionForm}
