@@ -49,6 +49,7 @@ class Header extends React.Component {
         <AddTransactionForm
           showAddTransactionForm={this.state.showAddTransactionForm}
           addTransaction={this.addTransaction}
+          toggleAddTransactionForm={this.toggleAddTransactionForm}
         />
       </div>
     );
