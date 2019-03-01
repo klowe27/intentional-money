@@ -27,7 +27,6 @@ class Header extends React.Component {
   }
   
   addTransaction(){
-    console.log()
     this.setState({showAddTransactionForm: !this.state.showAddTransactionForm})
   }
   
@@ -48,7 +47,6 @@ class Header extends React.Component {
         />
         <AddTransactionForm
           showAddTransactionForm={this.state.showAddTransactionForm}
-          addTransaction={this.addTransaction}
           toggleAddTransactionForm={this.toggleAddTransactionForm}
         />
       </div>
