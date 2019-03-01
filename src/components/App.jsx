@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Error404 from './Error404';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import './assets/styles/styles.css';
 
 class App extends React.Component {
   render(){
