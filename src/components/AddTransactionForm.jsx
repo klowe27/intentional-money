@@ -66,54 +66,70 @@ class AddTransactionForm extends React.Component {
           <form onSubmit={this.handleAddTransaction} className='form'>
             <span className='close' onClick={this.props.toggleAddTransactionForm}>x</span>
             <h2>Add Transaction</h2>
-            <label for='transactionDate'>Date</label>
-            <input
-              type='date'
-              ref={(input)=>{_transactionDate=input;}}
-            />
-            <label for='vendor'>Vendor</label>
-            <input
-              type='text'
-              placeholder='vendor'
-              ref={(input)=>{_vendor=input;}}
-            />
-            <label for='account'>Account</label>
-            <select onChange={this.selectAccount} required>
-              <option value=""></option>
-              <option value="checking">Checking</option>
-              <option value="savings">Savings</option>
-             </select>
-            <label for='category'>Category</label>
-            <select onChange={this.selectCategory} required>
-              <option value=""></option>
-              <option value="groceries">Groceries</option>
-              <option value="transportation">Transportation</option>
-              <option value="rent">Rent</option>
-             </select>
-            <label for='note'>Notes</label>
-            <input
-              type='text'
-              placeholder='note'
-              ref={(input)=>{_transactionNote=input;}}
-            />
-            <label for='amount'>Amount</label>
-            <input
-              type='number'
-              placeholder='amount'
-              ref={(input)=>{_amount=input;}}
-            />
-            <label for='type'>Transaction Type</label>
-            <select onChange={this.selectType} required>
-              <option value=""></option>
-              <option value="true">Expense</option>
-              <option value="false">Income</option>
-             </select>
-             <label for='cleared'>Cleared?</label>
-             <select onChange={this.selectCleared} required>
-               <option value=""></option>
-               <option value="true">Yes</option>
-               <option value="false">No</option>
+            <div className='form-group'>
+              <label for='amount'>Amount</label>
+              <input
+                type='number'
+                placeholder='amount'
+                ref={(input)=>{_amount=input;}}
+              />
+            </div>
+            <div className='form-group'>
+              <label for='transactionDate'>Date</label>
+              <input
+                type='date'
+                ref={(input)=>{_transactionDate=input;}}
+              />
+            </div>
+            <div className='form-group'>
+              <label for='vendor'>Vendor</label>
+              <input
+                type='text'
+                placeholder='vendor'
+                ref={(input)=>{_vendor=input;}}
+              />
+            </div>
+            <div className='form-group'>
+              <label for='account'>Account</label>
+              <select onChange={this.selectAccount} required>
+                <option value=""></option>
+                <option value="checking">Checking</option>
+                <option value="savings">Savings</option>
+               </select>
+            </div>
+            <div className='form-group'>
+              <label for='category'>Category</label>
+              <select onChange={this.selectCategory} required>
+                <option value=""></option>
+                <option value="groceries">Groceries</option>
+                <option value="transportation">Transportation</option>
+                <option value="rent">Rent</option>
               </select>
+            </div>
+            <div className='form-group'>
+              <label for='note'>Notes</label>
+              <input
+                type='text'
+                placeholder='note'
+                ref={(input)=>{_transactionNote=input;}}
+              />
+            </div>
+            <div className='form-group'>
+              <label for='type'>Transaction Type</label>
+              <select onChange={this.selectType} required>
+                <option value=""></option>
+                <option value="true">Expense</option>
+                <option value="false">Income</option>
+               </select>
+            </div>
+            <div className='form-group'>
+               <label for='cleared'>Cleared?</label>
+               <select onChange={this.selectCleared} required>
+                 <option value=""></option>
+                 <option value="true">Yes</option>
+                 <option value="false">No</option>
+                </select>
+              </div>
             <button type='submit'>Add</button>
           </form>
         </div>
