@@ -1,8 +1,19 @@
 .form {
   background-color: gray;
-  padding: 2rem;
+  padding: 1rem;
   width: 400px;
   height: 400px;
   margin: 0 auto;
   margin-top: 15%;
+}
+
+.close {
+  font-size: 1.5rem;
+  color: white;
+  float: right;
+  font-weight: lighter;
+}
+
+.close:hover {
+  color: black;
 }
