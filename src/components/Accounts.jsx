@@ -1,8 +1,11 @@
 import React from 'react';
+import TransactionList from './TransactionList';
 
 function Accounts(){
   return (
-    <div>Accounts</div>
+    <div>
+      <TransactionList/>
+    </div>
   )
 }
 

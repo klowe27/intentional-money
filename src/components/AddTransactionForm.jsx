@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './assets/styles/AddTransactionForm.css';
 
 let _transactionDate = null;
 let _vendor = null;
@@ -11,7 +10,6 @@ class AddTransactionForm extends React.Component {
   
   constructor(props){
     super(props);
-    console.log(props);
     this.state = {
       category: null,
       account: null,
@@ -126,8 +124,8 @@ class AddTransactionForm extends React.Component {
               <label for='cleared'>Cleared?</label>
               <select onChange={this.handleSelectCleared} required>
                 <option value=""></option>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
+                <option value="Cleared">Yes</option>
+                <option value="Uncleared">No</option>
               </select>
             </div>
             <button type='submit'>Add</button>
@@ -140,7 +138,6 @@ class AddTransactionForm extends React.Component {
 
 AddTransactionForm.propTypes = {
   showAddTransactionForm: PropTypes.boolean,
-  addTransaction: PropTypes.func,
   toggleAddTransactionForm: PropTypes.func
 };
 

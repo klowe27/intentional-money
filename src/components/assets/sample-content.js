@@ -34,46 +34,46 @@ export const sampleTransactions = [
     category: 'Grocies',
     account: 'Checking',
     expense: true,
-    cleared: true
+    cleared: 'Cleared'
   },
   {
-    date: '2019-05-20',
+    date: '2019-05-24',
     vendor: 'Ting',
     note: 'Sample note',
     amount: 35,
     category: 'Phone',
     account: 'Credit card',
     expense: true,
-    cleared: true
+    cleared: 'Cleared'
   },
   {
-    date: '2019-05-1',
+    date: '2019-05-24',
     vendor: 'Propery Management',
     note: 'Sample note',
     amount: 600,
     category: 'Rent',
     account: 'Checking',
     expense: true,
-    cleared: true
+    cleared: 'Cleared'
   },
   {
-    date: '2019-05-5',
+    date: '2019-05-24',
     vendor: 'Amazon',
     note: 'Sample note',
     amount: 35,
     category: 'Spending money',
     account: 'Credit Cart',
     expense: true,
-    cleared: false
+    cleared: 'Uncleared'
   },
   {
-    date: '2019-05-2',
+    date: '2019-05-24',
     vendor: 'Work',
     note: 'Sample note',
     amount: 1000,
     category: 'Income',
     account: 'Checking',
     expense: false,
-    cleared: true
+    cleared: 'Cleared'
   }
 ]
