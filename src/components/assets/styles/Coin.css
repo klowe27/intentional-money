@@ -1,0 +1,21 @@
+@keyframes coinFall {
+  from {top: 0;}
+  to {top: 50%;}
+}
+
+.coin {
+  position: fixed;
+  top: -65px;
+  width: 60px;
+  height: 60px;
+  background-color: #FCD116	;
+  border: solid 10px #FCDC3B;
+  color: #FCDC3B;
+  font-size: 48px;
+  font-weight: bolder;
+  text-align: center;
+  z-index: 10;
+  border-radius: 50%;
+  animation-name: coinFall;
+  animation-duration: 1s;
+}
