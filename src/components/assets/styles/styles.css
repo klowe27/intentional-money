@@ -8,6 +8,14 @@ body {
   margin: 0px;
 }
 
+h1 {
+  margin-top: 80px;
+  margin-bottom: 25px;
+  font-size: 40px;
+  font-weight: 100;
+  color: black;
+}
+
 h2 {
   font-weight: lighter;
 }
@@ -24,7 +32,7 @@ h2 {
 .form-group {
   display: block;
   text-align: left;
-  margin: 10px;
+  margin: 10px 10px 10px 0px;
 }
 
 label {
@@ -51,9 +59,9 @@ a {
 
 button {
   padding: 12px;
-  border: solid 1px #277179;
+  border: solid 1px #5ba789ff;
   background-color: white;
-  color: #277179;
+  color: #5ba789ff;
   font-weight: lighter;
   font-size: 1rem;
   border-radius: 5px;

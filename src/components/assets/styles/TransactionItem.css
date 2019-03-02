@@ -1,4 +1,23 @@
 .transactionRow {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 3fr 3fr 3fr 3fr 3fr 2fr 1fr 1fr;
+}
+
+.edit {
+  
+}
+
+.delete {
+  border-radius: 50%;
+  text-align: center;
+  width: 18px;
+  border: solid 1px gray;
+  color: gray;
+  padding: 0px;
+  margin: 0px;
+}
+
+.delete:hover {
+  border: solid 1px #5ba789ff;
+  color: #5ba789ff;
 }
