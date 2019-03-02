@@ -41,7 +41,7 @@ class Header extends React.Component {
           showMenu={this.state.showMenu}
           toggleMenu={this.toggleMenu}
         />
-        <Link to='/'><h1>Intentional Money</h1></Link>
+        <Link to='/'><h1 className='logo'>Intentional Money</h1></Link>
         <div className='addTransactionButton'>
           <Button 
             action={this.toggleAddTransactionForm}

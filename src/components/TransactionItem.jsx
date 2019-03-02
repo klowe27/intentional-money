@@ -20,6 +20,8 @@ function TransactionItem({date, vendor, note, amount, category, account, cleared
           fixedDecimalScale={true}
           prefix={'$'} />
         <div>{cleared}</div>
+        <div><span className='edit'>edit</span></div>
+        <div className='delete'>x</div>
       </div>
       <hr/>
     </div>

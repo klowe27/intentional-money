@@ -18,7 +18,7 @@ class Budget extends React.Component {
   
   render() {
     return (
-      <div><h2>Budget</h2>
+      <div><h1>Budget</h1>
         <CategoryList/>
         <Button 
           action={this.toggleCategoryForm}

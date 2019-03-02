@@ -1,5 +1,5 @@
 import React from 'react';
-import CoinList from './CoinList'
+import CoinList from './CoinList';
 import Pig from './assets/images/pig.png';
 import PigBelly from './assets/images/pig-belly.png';
 import './assets/styles/Homepage.css';
