@@ -9,7 +9,7 @@ function CategoryItem({name, budget, activity, remaining}) {
         <div>{name}</div>
         <div>{budget}</div>
         <div>{activity}</div>
-        <div>{remaining}</div>
+        <div><span className='green'>{remaining}</span></div>
       </div>
       <hr/>
     </div>
