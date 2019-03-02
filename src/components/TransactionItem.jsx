@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import NumberFormat from 'react-number-format';
 import './assets/styles/TransactionItem.css';
 
 function TransactionItem({date, vendor, note, amount, category, account, cleared}) {
@@ -11,7 +12,13 @@ function TransactionItem({date, vendor, note, amount, category, account, cleared
         <div>{note}</div>
         <div>{category}</div>
         <div>{account}</div>
-        <div>{amount}</div>
+        <NumberFormat 
+          value={amount} 
+          displayType={'text'} 
+          thousandSeparator={true} 
+          decimalScale={2}
+          fixedDecimalScale={true}
+          prefix={'$'} />
         <div>{cleared}</div>
       </div>
       <hr/>

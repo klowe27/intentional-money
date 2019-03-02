@@ -1,15 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './assets/styles/CategoryItem.css';
+import NumberFormat from 'react-number-format';
 
 function CategoryItem({name, budget, activity, remaining}) {
   return(
     <div>
       <div className='categoryRow'>
         <div>{name}</div>
-        <div>{budget}</div>
-        <div>{activity}</div>
-        <div><span className='green'>{remaining}</span></div>
+        <NumberFormat 
+          value={budget} 
+          displayType={'text'} 
+          thousandSeparator={true} 
+          decimalScale={2}
+          fixedDecimalScale={true}
+          prefix={'$'} />
+        <NumberFormat 
+          value={activity} 
+          displayType={'text'} 
+          thousandSeparator={true} 
+          decimalScale={2}
+          fixedDecimalScale={true}
+          prefix={'$'} />
+        <div>
+          <span className='green'>
+            <NumberFormat 
+              value={activity} 
+              displayType={'text'} 
+              thousandSeparator={true} 
+              decimalScale={2}
+              fixedDecimalScale={true}
+              prefix={'$'} />
+          </span>
+        </div>
       </div>
       <hr/>
     </div>

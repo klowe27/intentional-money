@@ -1,13 +1,13 @@
 export const categoryListData = [
   {
     name: 'Groceries',
-    budget: '400',
+    budget: '400.25',
     activity: '125',
     remaining: '275'
   },
   {
     name: 'Rent',
-    budget: '600',
+    budget: '600.50',
     activity: '600',
     remaining: '0'
   },
@@ -19,7 +19,7 @@ export const categoryListData = [
   },
   {
     name: 'Phone',
-    budget: '50',
+    budget: '50.2',
     activity: '50',
     remaining: '0'
   }
