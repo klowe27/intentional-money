@@ -4,7 +4,8 @@ import Pig from './assets/images/pig.png';
 import PigBelly from './assets/images/pig-belly.png';
 import './assets/styles/Homepage.css';
 
-function Homepage(){
+function Homepage(){ 
+  
   return (
     <div>
       <CoinList/>

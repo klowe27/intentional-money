@@ -8,12 +8,15 @@ function CoinList() {
   }
 
   function generateCoinList(){
+    console.log(window.innerWidth);
     let coinList = [];
+    let newDelay = 0
     const center = window.innerWidth/2;
-    for (let i=0; i < 10; i++) {
-      let newLeft = center;
-      let newDelay = i;
+    const fivePercent = window.innerWidth/20;
+    for (let i=0; i < 5; i++) {
+      let newLeft = center-30;
       coinList.push({left: newLeft, delay: newDelay});
+      newDelay += 1;
     }
     return coinList;
   }

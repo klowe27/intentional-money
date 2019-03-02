@@ -1,6 +1,7 @@
 @keyframes coinFall {
-  from {top: 0;}
-  to {top: 50%;}
+  100% {
+    top: 70%;
+  }
 }
 
 .coin {
@@ -17,5 +18,13 @@
   z-index: 10;
   border-radius: 50%;
   animation-name: coinFall;
-  animation-duration: 1s;
+  animation-duration: 2s;
+}
+
+@media screen and (max-width: 960px) {
+  @keyframes coinFall {
+    100% {
+      top: 70%;
+    }
+  }
 }
