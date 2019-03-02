@@ -59,13 +59,14 @@ a {
 
 button {
   padding: 12px;
-  border: solid 1px #5ba789ff;
-  background-color: white;
-  color: #5ba789ff;
+  background-color: #5ba789ff;
+  color: white;
   font-weight: lighter;
   font-size: 1rem;
   border-radius: 5px;
   width: 175px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   box-shadow: 0 5px 15px rgba(145, 92, 182, .2);
 }
 
@@ -99,8 +100,6 @@ button:hover{
 .close:hover {
   color: black;
 }
-
-
 
 hr {
   border: 0;

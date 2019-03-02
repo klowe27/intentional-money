@@ -1,0 +1,29 @@
+@keyframes heroAppear {
+  from {margin-top: 100%; opacity: .1;}
+  to {opacity: 1;}
+}
+
+.hero {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 15%;
+  animation-name: heroAppear;
+  animation-duration: 2s;
+}
+
+.headline {
+  font-size: 100px;
+  font-family: Helvetica;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .headline {
+    font-size: 50px;
+  }
+  .hero {
+    margin-top: 20%;
+    width: 80%;
+  }
+}

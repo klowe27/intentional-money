@@ -1,0 +1,15 @@
+@keyframes barGraph {
+  from {bottom: -300px; opacity: .1;}
+  to {bottom: 0px; opacity: 1;}
+}
+
+.bar {
+  position: fixed;
+  bottom: 0px;
+  background-color: #F0F0F0;
+  animation-name: barGraph;
+  margin: 10px;
+  z-index: -25;
+  opacity: 0px;
+  animation-timing-function: ease-in;
+}
