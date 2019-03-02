@@ -15,11 +15,11 @@ function AddAccountForm({showAddAccountForm, toggleAccountForm}) {
   if (!showAddAccountForm){
     return(
       null
-    )
+    );
   } else {
     return(
       <div className='modal-background'> 
-        <form onSubmit={toggleAccountForm} className='form'>
+        <form onSubmit={handleAddCategory} className='form'>
           <span className='close' onClick={toggleAccountForm}>x</span>
           <h2>Add Account</h2>
           <div className='form-group'>
@@ -40,7 +40,7 @@ function AddAccountForm({showAddAccountForm, toggleAccountForm}) {
           <button type='submit'>Add</button>
         </form>
       </div>
-    )
+    );
   }
 }
 

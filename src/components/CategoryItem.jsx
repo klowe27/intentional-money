@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './assets/styles/CategoryItem.css'
+import './assets/styles/CategoryItem.css';
 
 function CategoryItem({name, budget, activity, remaining}) {
   return(
@@ -13,7 +13,7 @@ function CategoryItem({name, budget, activity, remaining}) {
       </div>
       <hr/>
     </div>
-  )
+  );
 }
 
 CategoryItem.propTypes = {

@@ -21,7 +21,7 @@ function MenuTab({showMenu, toggleMenu}) {
 }
 
 MenuTab.propTypes = {
-  showMenu: PropTypes.boolean,
+  showMenu: PropTypes.bool,
   toggleMenu: PropTypes.func
 };
 

@@ -22,7 +22,7 @@ function Menu({showMenu, toggleMenu}) {
 }
 
 Menu.propTypes = {
-  showMenu: PropTypes.boolean,
+  showMenu: PropTypes.bool,
   toggleMenu: PropTypes.func
 };
 

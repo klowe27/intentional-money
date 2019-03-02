@@ -8,7 +8,7 @@ class Accounts extends React.Component {
     super(props);
     this.state = {
       showAddAccountForm: false,
-    }
+    };
     this.toggleAccountForm = this.toggleAccountForm.bind(this);
   }
   
@@ -29,7 +29,7 @@ class Accounts extends React.Component {
           toggleAccountForm={this.toggleAccountForm}
         />
       </div>
-    )
+    );
   }
 }
 

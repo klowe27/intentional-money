@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './assets/styles/TransactionItem.css'
+import './assets/styles/TransactionItem.css';
 
 function TransactionItem({date, vendor, note, amount, category, account, cleared}) {
   return(
@@ -16,7 +16,7 @@ function TransactionItem({date, vendor, note, amount, category, account, cleared
       </div>
       <hr/>
     </div>
-  )
+  );
 }
 
 TransactionItem.propTypes = {
@@ -26,7 +26,7 @@ TransactionItem.propTypes = {
   amount: PropTypes.number,
   category: PropTypes.string,
   account: PropTypes.string,
-  cleared: PropTypes.boolean
+  cleared: PropTypes.string
 };
 
 export default TransactionItem;

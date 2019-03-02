@@ -21,7 +21,7 @@ class AddTransactionForm extends React.Component {
     this.handleSelectAccount = this.handleSelectAccount.bind(this);
     this.handleSelectType = this.handleSelectType.bind(this);
     this.handleSelectCleared = this.handleSelectCleared.bind(this);
-
+    this.handleAddTransaction = this.handleAddTransaction.bind(this);
   }
   
   handleAddTransaction(e) {
@@ -62,7 +62,7 @@ class AddTransactionForm extends React.Component {
       return (
         <div className='modal-background'> 
           <form onSubmit={this.handleAddTransaction} className='form'>
-            <span className='close' onClick={this.props.toggleAddTransactionForm}>x</span>
+            <span className='close' onClick={this.handleAddTransaction}>x</span>
             <h2>Add Transaction</h2>
             <div className='form-group'>
               <label for='amount'>Amount</label>
@@ -137,7 +137,7 @@ class AddTransactionForm extends React.Component {
 }
 
 AddTransactionForm.propTypes = {
-  showAddTransactionForm: PropTypes.boolean,
+  showAddTransactionForm: PropTypes.bool,
   toggleAddTransactionForm: PropTypes.func
 };
 

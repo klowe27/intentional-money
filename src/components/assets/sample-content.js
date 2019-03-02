@@ -23,7 +23,7 @@ export const categoryListData = [
     activity: '50',
     remaining: '0'
   }
-]
+];
 
 export const sampleTransactions = [
   {
@@ -76,4 +76,4 @@ export const sampleTransactions = [
     expense: false,
     cleared: 'Cleared'
   }
-]
+];

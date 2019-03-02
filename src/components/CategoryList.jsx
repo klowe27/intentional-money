@@ -15,7 +15,7 @@ function CategoryList(){
           key={v4()}/>
       )}
     </div>
-  )
+  );
 }
 
 export default CategoryList;

@@ -18,7 +18,7 @@ function TransactionList(){
           key={v4()}/>
       )}
     </div>
-  )
+  );
 }
 
 export default TransactionList;

@@ -9,14 +9,13 @@ function AddCategoryForm({showAddCategoryForm, toggleCategoryForm}) {
     e.preventDefault();
     console.log(_name.value);
     console.log(_budget.value);
-
     toggleCategoryForm();
   }
   
   if (!showAddCategoryForm){
     return(
       null
-    )
+    );
   } else {
     return(
       <div className='modal-background'> 
@@ -41,12 +40,12 @@ function AddCategoryForm({showAddCategoryForm, toggleCategoryForm}) {
           <button type='submit'>Add</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
 AddCategoryForm.propTypes = {
-  showAddCategoryForm: PropTypes.boolean,
+  showAddCategoryForm: PropTypes.bool,
   toggleCategoryForm: PropTypes.func
 };
 

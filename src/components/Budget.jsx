@@ -8,7 +8,7 @@ class Budget extends React.Component {
     super(props);
     this.state = {
       showAddCategoryForm: false,
-    }
+    };
     this.toggleCategoryForm = this.toggleCategoryForm.bind(this);
   }
   
@@ -29,7 +29,7 @@ class Budget extends React.Component {
           toggleCategoryForm={this.toggleCategoryForm}
         />
       </div>
-    )
+    );
   }
 }
 
