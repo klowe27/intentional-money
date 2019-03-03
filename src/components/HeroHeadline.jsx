@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import './assets/styles/HeroHeadline.css'
+import './assets/styles/HeroHeadline.css';
 
 function HeroHeadline(){
   
@@ -9,7 +8,7 @@ function HeroHeadline(){
       <div className='headline'>Reach your financial goals.</div>
       <button className='heroButton'>Start Now</button>
     </div>
-  )
+  );
 }
 
 export default HeroHeadline;

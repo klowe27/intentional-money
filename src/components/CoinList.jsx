@@ -1,6 +1,5 @@
 import React from 'react';
 import Coin from './Coin';
-import PropTypes from 'prop-types';
 import {v4} from 'uuid';
 
 function CoinList() {
@@ -10,7 +9,7 @@ function CoinList() {
 
   function generateCoinList(){
     let coinList = [];
-    let newDelay = 0
+    let newDelay = 0;
     const center = window.innerWidth/2;
     for (let i=0; i < 20; i++) {
       let newLeft = randomNumber(center-150, center+100);

@@ -1,6 +1,5 @@
 import React from 'react';
 import Bar from './Bar';
-import PropTypes from 'prop-types';
 import {v4} from 'uuid';
 
 function BarList() {
@@ -21,7 +20,7 @@ function BarList() {
       barList.push({width: newWidth, height: newHeight, left: newLeft, duration: newDuration});
       newHeight += randomNumber(0, height/10);
       newLeft += width/20;
-      newDuration += 200;
+      newDuration += 100;
     }
     return barList;
   }

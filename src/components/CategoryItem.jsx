@@ -25,7 +25,7 @@ function CategoryItem({name, budget, activity, remaining}) {
         <div>
           <span className='green'>
             <NumberFormat 
-              value={activity} 
+              value={remaining} 
               displayType={'text'} 
               thousandSeparator={true} 
               decimalScale={2}
