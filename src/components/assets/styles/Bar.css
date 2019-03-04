@@ -8,7 +8,7 @@
   bottom: 0px;
   background-color: #F0F0F0;
   animation-name: barGraph;
-  margin: 10px;
+  margin: 0px 5px;
   z-index: -25;
   opacity: 0px;
   animation-timing-function: ease-in;

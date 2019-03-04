@@ -3,16 +3,15 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.green {
-  background-color: #c4e7a0;
+.red {
+  background-color: #ffc2b3;
   padding: .2em .7em;
   border-radius: 10rem;
 }
 
-.red {
-  border-radius: 15%;
-  background-color: red;
-  padding-left: 5px;
-  padding-right: 5px;
+.green {
+  background-color: #cde4db;
+  padding: .2em .7em;
+  border-radius: 10rem;
 }
   

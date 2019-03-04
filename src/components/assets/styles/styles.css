@@ -6,6 +6,7 @@ html {
 
 body {
   margin: 0px;
+  padding: 0px;
 }
 
 h1 {
@@ -20,37 +21,8 @@ h2 {
   font-weight: lighter;
 }
 
-.modal-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255,255,255,.5);
-}
-
-.form-group {
-  display: block;
-  text-align: left;
-  margin: 10px 10px 10px 0px;
-}
-
-label {
-  margin-right: 20px; 
-}
-
-input {
-  width: auto;
-  padding: 10px;
-  border-radius: 5px;
-  border-style: none;
-}
-
-select {
-  width: 200px;
-  padding: 5px;
-  border-radius: 5px;
-  height: 30px;
+h3 {
+  color: #5ba789ff;
 }
 
 a {
@@ -58,13 +30,14 @@ a {
 }
 
 button {
-  padding: 12px;
+  padding: 14px;
+  border-style: none;
   background-color: #5ba789ff;
   color: white;
   font-weight: lighter;
-  font-size: 1rem;
+  font-size: 1.1rem;
   border-radius: 5px;
-  width: 175px;
+  width: 190px;
   margin-top: 20px;
   margin-bottom: 20px;
   box-shadow: 0 5px 15px rgba(145, 92, 182, .2);
@@ -73,32 +46,90 @@ button {
 button:hover{
   background-color: black;
   color: white;
-  border-style: none;
   box-shadow: 0 5px 15px rgba(145, 92, 182, .5);
 }
 
+.transactionButton {
+  margin-top: 2px;
+  background-color: white;
+  color: #5ba789ff;
+  padding: 10px;
+  width: 120px;
+}
+
 .container {
-  margin-top: 65px;
+  padding: 50px 75px;
 }
 
 .form {
-  background-color: gray;
-  padding: 1rem;
+  background-color: #F0F0F0;
+  padding: 1rem 3rem 2rem 3rem;
   width: 400px;
   height: auto;
-  margin: 0 auto;
-  margin-top: 15%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 102;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(100,100,100,.5);
+  z-index: 101;
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+label {
+  margin-top: 3px;
+  font-size: 1.3rem;
+  text-align: right; 
+  padding-right: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border-style: none;
+  margin-right: 10px;
+}
+
+select {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  height: 30px;
+  border-style: none;
+  background-color: white;
+}
+
+.dropdown {
+  margin-bottom: 40px;
+  border: solid 1px gray;
+  border-radius: 5%;
 }
 
 .close {
   font-size: 1.5rem;
-  color: white;
+  color: black;
   float: right;
   font-weight: lighter;
 }
 
 .close:hover {
-  color: black;
+  color: gray;
 }
 
 hr {

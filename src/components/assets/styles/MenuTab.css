@@ -14,7 +14,7 @@
 .menuTab {
   position: fixed;
   left: 30px;
-  background-color: gray;
+  background-color: white;
   width: 21px;
   height: 3px;
   z-index: 30;
