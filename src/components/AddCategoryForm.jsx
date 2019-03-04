@@ -23,10 +23,9 @@ function AddCategoryForm({showAddCategoryForm, toggleCategoryForm}) {
           <span className='close' onClick={toggleCategoryForm}>x</span>
           <h2>Add Category</h2>
           <div className='form-group'>
-            <label from='name'>Category name</label>
+            <label from='name'>Name</label>
             <input
               type='text'
-              placeholder='Grocies'
               ref={(input)=>{_name=input;}}
             />
           </div>

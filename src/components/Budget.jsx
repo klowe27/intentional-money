@@ -18,7 +18,16 @@ class Budget extends React.Component {
   
   render() {
     return (
-      <div><h1>Budget</h1>
+      <div className='container'>
+        <h1>Budget</h1>
+        <div className='form-group dropdown'>
+          <select onChange={this.handleSortBy}>
+            <option value='3/19'>March 2019</option>
+            <option value='2/19'>February 2019</option>
+            <option value='1/19'>January 2019</option>
+            <option value='12/18'>December 2018</option>
+          </select>
+        </div>
         <CategoryList/>
         <Button 
           action={this.toggleCategoryForm}

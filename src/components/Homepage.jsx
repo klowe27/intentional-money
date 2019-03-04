@@ -15,7 +15,7 @@ class Homepage extends React.Component{
   componentDidMount(){
     setTimeout(()=>{
       this.setState({showPig:false});
-   },5600);
+    },5600);
   }
   
   render() {

@@ -23,10 +23,10 @@ function AddAccountForm({showAddAccountForm, toggleAccountForm}) {
           <span className='close' onClick={toggleAccountForm}>x</span>
           <h2>Add Account</h2>
           <div className='form-group'>
-            <label from='name'>Account name</label>
+            <label from='name'>Name</label>
             <input
               type='text'
-              placeholder='Checking'
+              placeholder='Checking, for example'
               ref={(input)=>{_name=input;}}
             />
           </div>

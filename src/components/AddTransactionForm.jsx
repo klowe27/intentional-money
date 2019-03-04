@@ -68,7 +68,6 @@ class AddTransactionForm extends React.Component {
               <label for='amount'>Amount</label>
               <input
                 type='number'
-                placeholder='amount'
                 ref={(input)=>{_amount=input;}}
               />
             </div>
@@ -83,7 +82,6 @@ class AddTransactionForm extends React.Component {
               <label for='vendor'>Vendor</label>
               <input
                 type='text'
-                placeholder='vendor'
                 ref={(input)=>{_vendor=input;}}
               />
             </div>
@@ -108,12 +106,11 @@ class AddTransactionForm extends React.Component {
               <label for='note'>Notes</label>
               <input
                 type='text'
-                placeholder='note'
                 ref={(input)=>{_transactionNote=input;}}
               />
             </div>
             <div className='form-group'>
-              <label for='type'>Transaction Type</label>
+              <label for='type'>Type</label>
               <select onChange={this.handleSelectType} required>
                 <option value=""></option>
                 <option value="true">Expense</option>

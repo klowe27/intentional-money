@@ -10,7 +10,7 @@ import './assets/styles/styles.css';
 class App extends React.Component {
   render(){
     return (
-      <div className='container'>
+      <div>
         <Header/>
         <Switch>
           <Route exact path='/' component={Homepage} />

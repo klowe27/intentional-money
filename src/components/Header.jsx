@@ -3,6 +3,7 @@ import Button from './Button';
 import MenuTab from './MenuTab';
 import Menu from './Menu';
 import AddTransactionForm from './AddTransactionForm';
+import Logo from './assets/images/logo.png';
 import { Link } from 'react-router-dom';
 import './assets/styles/Header.css';
 
@@ -41,10 +42,11 @@ class Header extends React.Component {
           showMenu={this.state.showMenu}
           toggleMenu={this.toggleMenu}
         />
-        <Link to='/'><h1 className='logo'>Intentional Money</h1></Link>
+        <Link to='/'><span className='logoName'><img src={Logo} className='logo'/>Intentional Money</span></Link>
         <div className='addTransactionButton'>
           <Button 
             action={this.toggleAddTransactionForm}
+            className='transactionButton'
             name="+ transaction"
           />
         </div>

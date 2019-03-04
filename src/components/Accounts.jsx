@@ -23,11 +23,10 @@ class Accounts extends React.Component {
   }
   
   render() {
-    console.log(this.state.sortBy);
     return (
-      <div><h1>Accounts</h1>
-        <div className='form-group'>
-          <label for='sort'>Select Account</label>
+      <div className='container'>
+        <h1>Accounts</h1>
+        <div className='form-group dropdown'>
           <select onChange={this.handleSortBy}>
             <option value=''>All Accounts</option>
             <option value='checking'>Checking ($2,300.00)</option>
