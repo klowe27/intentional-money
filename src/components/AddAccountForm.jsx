@@ -31,7 +31,7 @@ function AddAccountForm({showAddAccountForm, toggleAccountForm}) {
             />
           </div>
           <div className='form-group'>
-            <label from='balance'>Current balance</label>
+            <label from='balance'>Balance</label>
             <input
               type='number'
               ref={(input)=>{_balance=input;}}

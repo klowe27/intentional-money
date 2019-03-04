@@ -63,8 +63,8 @@ button:hover{
 
 .form {
   background-color: #F0F0F0;
-  padding: 1rem 3rem 2rem 3rem;
-  width: 400px;
+  padding: 2rem 4rem 2rem 3rem;
+  width: 450px;
   height: auto;
   margin: 0;
   position: absolute;
@@ -72,6 +72,7 @@ button:hover{
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 102;
+  text-align: center;
 }
 
 .modal-background {
@@ -86,7 +87,7 @@ button:hover{
 
 .form-group {
   display: grid;
-  grid-template-columns: 3fr 5fr;
+  grid-template-columns: 1fr 3fr;
   text-align: left;
   margin-bottom: 20px;
 }
@@ -99,11 +100,10 @@ label {
 }
 
 input {
-  width: 100%;
+  width: 94%;
   padding: 10px;
   border-radius: 5px;
   border-style: none;
-  margin-right: 10px;
 }
 
 select {
@@ -124,7 +124,9 @@ select {
 .close {
   font-size: 1.5rem;
   color: black;
-  float: right;
+  position: absolute;
+  top: 5px;
+  right: 15px;
   font-weight: lighter;
 }
 
