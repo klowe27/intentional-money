@@ -10,9 +10,12 @@ This is a budgeting app where users can create a budget and track transactions.
 
 ## Site Plan
 
-* A visual representation of the layout/appearance [here] (https://docs.google.com/presentation/d/1A02e9nJZqEkrIvFPrJaV8hc0JglVK82m05_LCetHxVU/edit?usp=sharing)
+* A visual representation of the layout/appearance [here](https://docs.google.com/presentation/d/1A02e9nJZqEkrIvFPrJaV8hc0JglVK82m05_LCetHxVU/edit?usp=sharing).
+
+* Component structure:
 
 <img src="src/components/assets/images/structure.png" width="450" title="Component Structure">
+* Franz, I didn't use a separate repo for planning. I included my plan and static site all within this repository. 
 
 
 ## Setup/Installation Requirements
