@@ -1,25 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Firebase from 'firebase';
 
 function AddAccountForm({showAddAccountForm, toggleAccountForm}) {
   let _name = null;
   let _balance = null;
-  
-  function handleAddCategory(e){
+  const db = firebase.database();
+
+  function handleAddAccount(e){
     e.preventDefault();
-    console.log(_name.value);
-    console.log(_balance.value);
     toggleAccountForm();
+    const accounts = db.ref('Accounts/');
+    return () => accounts.push({
+      names: _name.value,
+      balance: _balance.value,
+    });
   }
-  
+
   if (!showAddAccountForm){
     return(
       null
     );
   } else {
     return(
-      <div className='modal-background'> 
-        <form onSubmit={handleAddCategory} className='form'>
+      <div className='modal-background'>
+        <form onSubmit={handleAddAccount} className='form'>
           <span className='close' onClick={toggleAccountForm}>x</span>
           <h2>Add Account</h2>
           <div className='form-group'>
