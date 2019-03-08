@@ -1,27 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Firebase from 'firebase';
 
-let _transactionDate = null;
-let _vendor = null;
-let _transactionNote = null;
-let _amount = null;
+let _amount;
+let _transactionDate;
+let _vendor;
+let _account;
+let _type;
+let _cleared;
+let _category;
 
 class AddTransactionForm extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
-      category: null,
-      account: null,
-      type: null,
-      cleared: null,
       accountList: {}
     };
-    this.handleAddTransaction = this.handleAddTransaction.bind(this);
-    this.handleSelectCategory = this.handleSelectCategory.bind(this);
-    this.handleSelectAccount = this.handleSelectAccount.bind(this);
-    this.handleSelectType = this.handleSelectType.bind(this);
-    this.handleSelectCleared = this.handleSelectCleared.bind(this);
     this.handleAddTransaction = this.handleAddTransaction.bind(this);
   }
 
@@ -31,31 +26,18 @@ class AddTransactionForm extends React.Component {
 
   handleAddTransaction(e) {
     e.preventDefault();
-    console.log(_transactionDate.value);
-    console.log(_vendor.value);
-    console.log(_transactionNote.value);
-    console.log(_amount.value);
-    console.log(this.state.category);
-    console.log(this.state.account);
-    console.log(this.state.type);
-    console.log(this.state.cleared);
+    const db = firebase.database();
+    const transactions = db.ref('Transactions/' + this.props.user.uid);
+    transactions.push({
+      transactionDate: _transactionDate.value,
+      vendor: _vendor.value,
+      amount: _amount.value,
+      category: _category.value,
+      account: _account.value,
+      type: _type.value,
+      cleared: _cleared.value
+    });
     this.props.toggleAddTransactionForm();
-  }
-
-  handleSelectCategory(e){
-    this.setState({category: e.target.value});
-  }
-
-  handleSelectAccount(e){
-    this.setState({account: e.target.value});
-  }
-
-  handleSelectType(e){
-    this.setState({type: e.target.value});
-  }
-
-  handleSelectCleared(e){
-    this.setState({cleared: e.target.value});
   }
 
   render() {
@@ -92,8 +74,7 @@ class AddTransactionForm extends React.Component {
             </div>
             <div className='form-group'>
               <label for='account'>Account</label>
-              <select onChange={this.handleSelectAccount} required>
-                <option value=""></option>
+              <select ref={(input) => {_account = input}} required>
                 {Object.keys(this.state.accountList).map(accountId =>
                   <option value={accountId} key={accountId}>{this.state.accountList[accountId].name}</option>
                 )}
@@ -101,23 +82,15 @@ class AddTransactionForm extends React.Component {
             </div>
             <div className='form-group'>
               <label for='category'>Category</label>
-              <select onChange={this.handleSelectCategory} required>
-                <option value=""></option>
+              <select ref={(input) => {_category = input}} required>
                 <option value="groceries">Groceries</option>
                 <option value="transportation">Transportation</option>
                 <option value="rent">Rent</option>
               </select>
             </div>
             <div className='form-group'>
-              <label for='note'>Notes</label>
-              <input
-                type='text'
-                ref={(input)=>{_transactionNote=input;}}
-              />
-            </div>
-            <div className='form-group'>
               <label for='type'>Type</label>
-              <select onChange={this.handleSelectType} required>
+              <select ref={(input) => {_type = input}} required>
                 <option value=""></option>
                 <option value="true">Expense</option>
                 <option value="false">Income</option>
@@ -125,7 +98,7 @@ class AddTransactionForm extends React.Component {
             </div>
             <div className='form-group'>
               <label for='cleared'>Cleared?</label>
-              <select onChange={this.handleSelectCleared} required>
+              <select ref={(input) => {_cleared = input}} required>
                 <option value=""></option>
                 <option value="Cleared">Yes</option>
                 <option value="Uncleared">No</option>
@@ -142,7 +115,8 @@ class AddTransactionForm extends React.Component {
 AddTransactionForm.propTypes = {
   showAddTransactionForm: PropTypes.bool,
   toggleAddTransactionForm: PropTypes.func,
-  accounts: PropTypes.object
+  accounts: PropTypes.object,
+  user: PropTypes.object
 };
 
 export default AddTransactionForm;
