@@ -30,13 +30,15 @@ class TransactionList extends React.Component {
       <div>
         {Object.keys(this.state.transactions).map(transactiontId =>
           <TransactionItem
-            date={this.props.transactions[transactiontId].transactionDate}
-            vendor={this.props.transactions[transactiontId].vendor}
-            amount={this.props.transactions[transactiontId].amount}
-            category={this.props.transactions[transactiontId].category}
-            account={this.getAccountNameByKey(this.props.transactions[transactiontId].account)}
-            cleared={this.props.transactions[transactiontId].cleared}
-            key={transactiontId}/>
+            date={this.state.transactions[transactiontId].transactionDate}
+            vendor={this.state.transactions[transactiontId].vendor}
+            amount={this.state.transactions[transactiontId].amount}
+            category={this.state.transactions[transactiontId].category}
+            account={this.getAccountNameByKey(this.state.transactions[transactiontId].account)}
+            cleared={this.state.transactions[transactiontId].cleared}
+            key={transactiontId}
+            id={transactiontId}
+            user={this.props.user}/>
         )}
       </div>
     );

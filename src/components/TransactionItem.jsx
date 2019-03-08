@@ -2,8 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NumberFormat from 'react-number-format';
 import './assets/styles/TransactionItem.css';
+import Firebase from 'firebase';
 
-function TransactionItem({date, vendor, amount, category, account, cleared}) {
+function TransactionItem({date, vendor, amount, category, account, cleared, id, user}) {
+
+  function handleRemoveTransaction(id){
+    let transaction =  firebase.database().ref('Transactions/' + user.uid + '/' + id);
+    transaction.remove();
+  }
+
   return(
     <div>
       <div className='transactionRow'>
@@ -18,9 +25,9 @@ function TransactionItem({date, vendor, amount, category, account, cleared}) {
           decimalScale={2}
           fixedDecimalScale={true}
           prefix={'$'} />
-        <div>{cleared}</div>
+        <div>{(cleared !== 'cleared') ? <p>c</p> : <p>n</p>}</div>
         <div><span className='edit'>e</span></div>
-        <div className='delete'>x</div>
+        <div onClick={() => { handleRemoveTransaction(id) }} className='delete'>x</div>
       </div>
       <hr/>
     </div>
@@ -33,7 +40,9 @@ TransactionItem.propTypes = {
   amount: PropTypes.number,
   category: PropTypes.string,
   account: PropTypes.string,
-  cleared: PropTypes.string
+  cleared: PropTypes.string,
+  id: PropTypes.string,
+  user: PropTypes.object
 };
 
 export default TransactionItem;
