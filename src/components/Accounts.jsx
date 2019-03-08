@@ -8,6 +8,7 @@ import Firebase from 'firebase';
 class Accounts extends React.Component {
   constructor(props){
     super(props);
+    console.log(this.props.accounts);
     this.state = {
       showAddAccountForm: false,
       sortBy: 'all'
@@ -30,8 +31,9 @@ class Accounts extends React.Component {
         <h1>Accounts</h1>
         <div className='form-group dropdown'>
           <select onChange={this.handleSortBy}>
-            {this.props.accounts.map(account=>{
-              <option value={account.key}>{account.name} ({account.balance})</option>
+            {Object.keys(this.props.accounts).map(accountId=>{
+              let account = this.props.accounts[accountId];
+              <option value={accountId}>{account.name} ({account.balance})</option>
             })}
           </select>
         </div>
@@ -52,7 +54,7 @@ class Accounts extends React.Component {
 
 Accounts.propTypes = {
   user: PropTypes.object,
-  accounts: PropTypes.array
+  accounts: PropTypes.object
 }
 
 export default Accounts;

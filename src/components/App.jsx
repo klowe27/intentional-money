@@ -18,7 +18,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       user: null,
-      accounts: []
+      accounts: {}
     }
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -48,18 +48,15 @@ class App extends React.Component {
   }
 
   getAccounts(){
-    let accountList = [];
+    let newState;
     let userAccounts = firebase.database().ref('Accounts/' + this.state.user.uid);
-    userAccounts.on('value', function(snap){
-      snap.forEach(function(child){
-        accountList.push(child.val());
-      });
+    userAccounts.on('value', (snap) => {
+      newState = Object.assign({}, snap.val());;
+      this.setState({ accounts: newState });
     });
-    this.setState({ accounts: accountList });
   }
 
   render(){
-    console.log(this.state.accounts);
     return (
       <div>
         <Header
