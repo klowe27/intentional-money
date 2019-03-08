@@ -12,7 +12,8 @@ function AddCategoryForm({showAddCategoryForm, toggleCategoryForm, user}) {
     toggleCategoryForm();
     categories.push({
       name: _name.value,
-      budget: _budget.value
+      budget: _budget.value,
+      activity: 0
     });
   }
 
