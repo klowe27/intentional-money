@@ -61,6 +61,6 @@ class Accounts extends React.Component {
 Accounts.propTypes = {
   user: PropTypes.object,
   accounts: PropTypes.object
-}
+};
 
 export default Accounts;

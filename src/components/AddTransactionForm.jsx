@@ -74,7 +74,7 @@ class AddTransactionForm extends React.Component {
             </div>
             <div className='form-group'>
               <label for='account'>Account</label>
-              <select ref={(input) => {_account = input}} required>
+              <select ref={(input) => {_account = input;}} required>
                 {Object.keys(this.state.accountList).map(accountId =>
                   <option value={accountId} key={accountId}>{this.state.accountList[accountId].name}</option>
                 )}
@@ -82,7 +82,7 @@ class AddTransactionForm extends React.Component {
             </div>
             <div className='form-group'>
               <label for='category'>Category</label>
-              <select ref={(input) => {_category = input}} required>
+              <select ref={(input) => {_category = input;}} required>
                 <option value="groceries">Groceries</option>
                 <option value="transportation">Transportation</option>
                 <option value="rent">Rent</option>
@@ -90,7 +90,7 @@ class AddTransactionForm extends React.Component {
             </div>
             <div className='form-group'>
               <label for='type'>Type</label>
-              <select ref={(input) => {_type = input}} required>
+              <select ref={(input) => {_type = input;}} required>
                 <option value=""></option>
                 <option value="true">Expense</option>
                 <option value="false">Income</option>
@@ -98,7 +98,7 @@ class AddTransactionForm extends React.Component {
             </div>
             <div className='form-group'>
               <label for='cleared'>Cleared?</label>
-              <select ref={(input) => {_cleared = input}} required>
+              <select ref={(input) => {_cleared = input;}} required>
                 <option value=""></option>
                 <option value="Cleared">Yes</option>
                 <option value="Uncleared">No</option>

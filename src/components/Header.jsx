@@ -79,7 +79,7 @@ Header.propTypes = {
   login: PropTypes.func,
   logout: PropTypes.func,
   accounts: PropTypes.object
-}
+};
 
 
 export default Header;

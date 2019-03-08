@@ -19,7 +19,7 @@ class App extends React.Component {
     this.state = {
       user: null,
       accounts: {}
-    }
+    };
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.getAccounts = this.getAccounts.bind(this);
@@ -51,7 +51,7 @@ class App extends React.Component {
     let newState;
     let userAccounts = firebase.database().ref('Accounts/' + this.state.user.uid);
     userAccounts.on('value', (snap) => {
-      newState = Object.assign({}, snap.val());;
+      newState = Object.assign({}, snap.val());
       this.setState({ accounts: newState });
     });
   }
