@@ -1,5 +1,6 @@
 import React from 'react';
 import CategoryList from './CategoryList';
+import PropTypes from 'prop-types';
 import Button from './Button';
 import AddCategoryForm from './AddCategoryForm';
 
@@ -11,11 +12,11 @@ class Budget extends React.Component {
     };
     this.toggleCategoryForm = this.toggleCategoryForm.bind(this);
   }
-  
+
   toggleCategoryForm(){
     this.setState({showAddCategoryForm: !this.state.showAddCategoryForm});
   }
-  
+
   render() {
     return (
       <div className='container'>
@@ -29,17 +30,22 @@ class Budget extends React.Component {
           </select>
         </div>
         <CategoryList/>
-        <Button 
+        <Button
           action={this.toggleCategoryForm}
           name='+ category'
-        /> 
+        />
         <AddCategoryForm
           showAddCategoryForm={this.state.showAddCategoryForm}
           toggleCategoryForm={this.toggleCategoryForm}
+          user={this.props.user}
         />
       </div>
     );
   }
+}
+
+Budget.propTypes = {
+  user: PropTypes.object
 }
 
 export default Budget;

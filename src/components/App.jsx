@@ -66,7 +66,8 @@ class App extends React.Component {
           accounts={this.state.accounts}/>
         <Switch>
           <Route exact path='/' component={Homepage} />
-          <Route path='/budget' component={Budget} />
+          <Route path='/budget' render={()=><Budget
+            user={this.state.user}/>}  />
           <Route path='/accounts' render={()=><Accounts
             user={this.state.user}
             accounts={this.state.accounts}/>} />
