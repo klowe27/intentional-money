@@ -19,12 +19,14 @@ class App extends React.Component {
     this.state = {
       user: null,
       accounts: {},
-      transactions: {}
+      transactions: {},
+      categories: {}
     };
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.getAccounts = this.getAccounts.bind(this);
     this.getTransactions = this.getTransactions.bind(this);
+    this.getCategories = this.getCategories.bind(this);
   }
 
   componentDidMount() {
@@ -33,6 +35,7 @@ class App extends React.Component {
         this.setState({ user });
         this.getAccounts();
         this.getTransactions();
+        this.getCategories();
       }
     });
   }
@@ -68,6 +71,15 @@ class App extends React.Component {
     });
   }
 
+  getCategories(){
+    let newState;
+    let userCategories = firebase.database().ref('Categories/' + this.state.user.uid);
+    userCategories.on('value', (snap) => {
+      newState = Object.assign({}, snap.val());
+      this.setState({ categories: newState });
+    });
+  }
+
   render(){
     return (
       <div>
@@ -79,7 +91,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/budget' render={()=><Budget
-            user={this.state.user}/>}  />
+            user={this.state.user}
+            categories={this.state.categories}/>}  />
           <Route path='/accounts' render={()=><Accounts
             user={this.state.user}
             accounts={this.state.accounts}

@@ -8,30 +8,39 @@ function CategoryItem({name, budget, activity, remaining}) {
     <div>
       <div className='categoryRow'>
         <div>{name}</div>
-        <NumberFormat 
-          value={budget} 
-          displayType={'text'} 
-          thousandSeparator={true} 
+        <NumberFormat
+          value={budget}
+          displayType={'text'}
+          thousandSeparator={true}
           decimalScale={2}
           fixedDecimalScale={true}
           prefix={'$'} />
-        <NumberFormat 
-          value={activity} 
-          displayType={'text'} 
-          thousandSeparator={true} 
+        <NumberFormat
+          value={activity}
+          displayType={'text'}
+          thousandSeparator={true}
           decimalScale={2}
           fixedDecimalScale={true}
           prefix={'$'} />
         <div>
-          <span className='green'>
-            <NumberFormat 
-              value={remaining} 
-              displayType={'text'} 
-              thousandSeparator={true} 
+          {remaining > 0 ? (<span className='green'>
+            <NumberFormat
+              value={remaining}
+              displayType={'text'}
+              thousandSeparator={true}
               decimalScale={2}
               fixedDecimalScale={true}
               prefix={'$'} />
-          </span>
+          </span> ) :
+          (<span className='red'>
+            <NumberFormat
+              value={remaining}
+              displayType={'text'}
+              thousandSeparator={true}
+              decimalScale={2}
+              fixedDecimalScale={true}
+              prefix={'$'} />
+          </span>)}
         </div>
       </div>
       <hr/>

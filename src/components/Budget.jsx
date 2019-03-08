@@ -9,8 +9,13 @@ class Budget extends React.Component {
     super(props);
     this.state = {
       showAddCategoryForm: false,
+      categories: {}
     };
     this.toggleCategoryForm = this.toggleCategoryForm.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ categories: nextProps.categories});
   }
 
   toggleCategoryForm(){
@@ -29,7 +34,8 @@ class Budget extends React.Component {
             <option value='12/18'>December 2018</option>
           </select>
         </div>
-        <CategoryList/>
+        <CategoryList
+          categories={this.state.categories}/>
         <Button
           action={this.toggleCategoryForm}
           name='+ category'
@@ -45,7 +51,8 @@ class Budget extends React.Component {
 }
 
 Budget.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
+  categories: PropTypes.object
 };
 
 export default Budget;
