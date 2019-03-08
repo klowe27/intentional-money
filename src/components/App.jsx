@@ -62,7 +62,8 @@ class App extends React.Component {
         <Header
           user={this.state.user}
           login={this.login}
-          logout={this.logout}/>
+          logout={this.logout}
+          accounts={this.state.accounts}/>
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/budget' component={Budget} />

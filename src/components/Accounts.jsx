@@ -4,6 +4,7 @@ import AddAccountForm from './AddAccountForm';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import Firebase from 'firebase';
+import NumberFormat from 'react-number-format';
 
 class Accounts extends React.Component {
   constructor(props){
@@ -37,9 +38,9 @@ class Accounts extends React.Component {
         <div className='form-group dropdown'>
           <select onChange={this.handleSortBy}>
             <option value='all'>All Accounts</option>
-            {(this.state.accounts !== {}) ? Object.keys(this.state.accounts).map(accountId=>{
-              <option value=`{accountId}` key=`{accountId}`>{this.state.accounts[accountId].name} ({this.state.accounts[accountId].balance})</option>
-            }) : null}
+            {Object.keys(this.state.accounts).map(accountId =>
+              <option value={accountId} key={accountId}>{this.state.accounts[accountId].name} ({this.state.accounts[accountId].balance})</option>
+            )}
           </select>
         </div>
         <TransactionList/>

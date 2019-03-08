@@ -7,14 +7,15 @@ let _transactionNote = null;
 let _amount = null;
 
 class AddTransactionForm extends React.Component {
-  
+
   constructor(props){
     super(props);
     this.state = {
       category: null,
       account: null,
       type: null,
-      cleared: null
+      cleared: null,
+      accountList: {}
     };
     this.handleAddTransaction = this.handleAddTransaction.bind(this);
     this.handleSelectCategory = this.handleSelectCategory.bind(this);
@@ -23,7 +24,11 @@ class AddTransactionForm extends React.Component {
     this.handleSelectCleared = this.handleSelectCleared.bind(this);
     this.handleAddTransaction = this.handleAddTransaction.bind(this);
   }
-  
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ accountList: nextProps.accounts });
+  }
+
   handleAddTransaction(e) {
     e.preventDefault();
     console.log(_transactionDate.value);
@@ -36,23 +41,23 @@ class AddTransactionForm extends React.Component {
     console.log(this.state.cleared);
     this.props.toggleAddTransactionForm();
   }
-  
+
   handleSelectCategory(e){
     this.setState({category: e.target.value});
   }
-  
+
   handleSelectAccount(e){
     this.setState({account: e.target.value});
   }
-  
+
   handleSelectType(e){
     this.setState({type: e.target.value});
   }
-  
+
   handleSelectCleared(e){
     this.setState({cleared: e.target.value});
   }
-  
+
   render() {
     if (!this.props.showAddTransactionForm){
       return(
@@ -60,7 +65,7 @@ class AddTransactionForm extends React.Component {
       );
     } else {
       return (
-        <div className='modal-background'> 
+        <div className='modal-background'>
           <form onSubmit={this.handleAddTransaction} className='form'>
             <span className='close' onClick={this.handleAddTransaction}>x</span>
             <h2>Add Transaction</h2>
@@ -89,8 +94,9 @@ class AddTransactionForm extends React.Component {
               <label for='account'>Account</label>
               <select onChange={this.handleSelectAccount} required>
                 <option value=""></option>
-                <option value="checking">Checking</option>
-                <option value="savings">Savings</option>
+                {Object.keys(this.state.accountList).map(accountId =>
+                  <option value={accountId} key={accountId}>{this.state.accountList[accountId].name}</option>
+                )}
               </select>
             </div>
             <div className='form-group'>
@@ -135,7 +141,8 @@ class AddTransactionForm extends React.Component {
 
 AddTransactionForm.propTypes = {
   showAddTransactionForm: PropTypes.bool,
-  toggleAddTransactionForm: PropTypes.func
+  toggleAddTransactionForm: PropTypes.func,
+  accounts: PropTypes.object
 };
 
 export default AddTransactionForm;
