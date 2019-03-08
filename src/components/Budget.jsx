@@ -46,6 +46,6 @@ class Budget extends React.Component {
 
 Budget.propTypes = {
   user: PropTypes.object
-}
+};
 
 export default Budget;

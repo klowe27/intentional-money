@@ -21,7 +21,7 @@ class Accounts extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({ accounts: nextProps.accounts});
-    this.setState({ transactions: nextProps.transactions })
+    this.setState({ transactions: nextProps.transactions });
   }
 
   toggleAccountForm(){

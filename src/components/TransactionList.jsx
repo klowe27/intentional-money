@@ -8,7 +8,7 @@ class TransactionList extends React.Component {
     super(props);
     this.state = {
       transactions: {}
-    }
+    };
     this.getAccountNameByKey = this.getAccountNameByKey.bind(this);
   }
 
@@ -41,6 +41,6 @@ class TransactionList extends React.Component {
 
 TransactionList.propTypes = {
   transactions: PropTypes.object
-}
+};
 
 export default TransactionList;
