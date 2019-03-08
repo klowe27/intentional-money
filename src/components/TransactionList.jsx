@@ -17,11 +17,14 @@ class TransactionList extends React.Component {
   }
 
   getAccountNameByKey(key){
-
+    let account =  firebase.database().ref('Accounts/' + this.props.user.uid + '/' + key);
+    account.on('value', (snap) => {
+      console.log(snap.val());
+      return (snap.val().name);
+    });
   }
 
   render() {
-    console.log(this.state.transactions);
     return(
       <div>
         {Object.keys(this.state.transactions).map(transactiontId =>
@@ -30,7 +33,7 @@ class TransactionList extends React.Component {
             vendor={this.props.transactions[transactiontId].vendor}
             amount={this.props.transactions[transactiontId].amount}
             category={this.props.transactions[transactiontId].category}
-            account={this.props.transactions[transactiontId].account}
+            account={this.getAccountNameByKey(this.props.transactions[transactiontId].account).name}
             cleared={this.props.transactions[transactiontId].cleared}
             key={transactiontId}/>
         )}
@@ -40,6 +43,7 @@ class TransactionList extends React.Component {
 }
 
 TransactionList.propTypes = {
+  user: PropTypes.object,
   transactions: PropTypes.object
 };
 

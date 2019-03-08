@@ -45,6 +45,7 @@ class Accounts extends React.Component {
           </select>
         </div>
         <TransactionList
+          user={this.props.user}
           transactions={this.state.transactions}/>
         <Button
           action={this.toggleAccountForm}
