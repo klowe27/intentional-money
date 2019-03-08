@@ -17,54 +17,61 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
+      accounts: []
     }
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.getAccounts = this.getAccounts.bind(this);
   }
 
   componentDidMount() {
     Auth.onAuthStateChanged((user) => {
       if (user) {
-        this.setState({
-          user
-        });
+        this.setState({ user });
+        this.getAccounts();
       }
     });
   }
 
   logout() {
-    Auth.signOut()
-      .then(() => {
-        this.setState({
-          user: null
-        });
-      });
+    Auth.signOut().then(() => {
+      this.setState({ user: null });
+    });
   }
 
   login() {
-    Auth.signInWithPopup(Provider)
-      .then((result) => {
-        const user = result.user;
-        this.setState({
-          user
-        });
+    Auth.signInWithPopup(Provider).then((result) => {
+      const user = result.user;
+      this.setState({ user });
+    });
+  }
+
+  getAccounts(){
+    let accountList = [];
+    let userAccounts = firebase.database().ref('Accounts/' + this.state.user.uid);
+    userAccounts.on('value', function(snap){
+      snap.forEach(function(child){
+        accountList.push(child.val());
       });
+    });
+    this.setState({ accounts: accountList });
   }
 
   render(){
-    console.log(this.state.user);
+    console.log(this.state.accounts);
     return (
       <div>
         <Header
           user={this.state.user}
           login={this.login}
-          logout={this.logout}
-          />
+          logout={this.logout}/>
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/budget' component={Budget} />
-          <Route path='/accounts' component={Accounts} />
+          <Route path='/accounts' render={()=><Accounts
+            user={this.state.user}
+            accounts={this.state.accounts}/>} />
           <Route component={Error404} />
         </Switch>
       </div>

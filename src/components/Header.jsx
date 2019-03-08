@@ -73,7 +73,7 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  user: PropTypes.obj,
+  user: PropTypes.object,
   login: PropTypes.func,
   logout: PropTypes.func
 }

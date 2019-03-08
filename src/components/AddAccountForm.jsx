@@ -2,18 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Firebase from 'firebase';
 
-function AddAccountForm({showAddAccountForm, toggleAccountForm}) {
+function AddAccountForm({showAddAccountForm, toggleAccountForm, user}) {
   let _name = null;
   let _balance = null;
   const db = firebase.database();
 
   function handleAddAccount(e){
+    console.log(user);
     e.preventDefault();
+    const accounts = db.ref('Accounts/' + user.uid);
     toggleAccountForm();
-    const accounts = db.ref('Accounts/');
-    return () => accounts.push({
-      names: _name.value,
-      balance: _balance.value,
+    accounts.push({
+      name: _name.value,
+      balance: _balance.value
     });
   }
 
@@ -51,7 +52,8 @@ function AddAccountForm({showAddAccountForm, toggleAccountForm}) {
 
 AddAccountForm.propTypes = {
   showAddAccountForm: PropTypes.bool,
-  toggleAccountForm: PropTypes.func
+  toggleAccountForm: PropTypes.func,
+  user: PropTypes.object
 };
 
 export default AddAccountForm;
