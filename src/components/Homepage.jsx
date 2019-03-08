@@ -4,20 +4,20 @@ import Pig from './Pig';
 import HeroHeadline from './HeroHeadline';
 import BarList from './BarList';
 
-class Homepage extends React.Component{ 
+class Homepage extends React.Component{
   constructor(props){
     super(props);
     this.state = {
       showPig: true,
     };
   }
-  
+
   componentDidMount(){
     setTimeout(()=>{
       this.setState({showPig:false});
     },5600);
   }
-  
+
   render() {
     if (this.state.showPig) {
       return(

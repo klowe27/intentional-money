@@ -11,6 +11,7 @@ class Accounts extends React.Component {
     super(props);
     this.state = {
       accounts: {},
+      transactions: {},
       showAddAccountForm: false,
       sortBy: 'all'
     };
@@ -19,7 +20,8 @@ class Accounts extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ accounts: nextProps.accounts });
+    this.setState({ accounts: nextProps.accounts});
+    this.setState({ transactions: nextProps.transactions })
   }
 
   toggleAccountForm(){
@@ -31,7 +33,6 @@ class Accounts extends React.Component {
   }
 
   render() {
-    console.log(this.state.accounts);
     return (
       <div className='container'>
         <h1>Accounts</h1>
@@ -43,7 +44,8 @@ class Accounts extends React.Component {
             )}
           </select>
         </div>
-        <TransactionList/>
+        <TransactionList
+          transactions={this.state.transactions}/>
         <Button
           action={this.toggleAccountForm}
           name='+ account'
@@ -60,7 +62,8 @@ class Accounts extends React.Component {
 
 Accounts.propTypes = {
   user: PropTypes.object,
-  accounts: PropTypes.object
+  accounts: PropTypes.object,
+  transactions: PropTypes.object
 };
 
 export default Accounts;

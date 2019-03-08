@@ -18,11 +18,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       user: null,
-      accounts: {}
+      accounts: {},
+      transactions: {}
     };
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.getAccounts = this.getAccounts.bind(this);
+    this.getTransactions = this.getTransactions.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +32,7 @@ class App extends React.Component {
       if (user) {
         this.setState({ user });
         this.getAccounts();
+        this.getTransactions();
       }
     });
   }
@@ -56,6 +59,15 @@ class App extends React.Component {
     });
   }
 
+  getTransactions(){
+    let newState;
+    let userTransactions = firebase.database().ref('Transactions/' + this.state.user.uid);
+    userTransactions.on('value', (snap) => {
+      newState = Object.assign({}, snap.val());
+      this.setState({ transactions: newState });
+    });
+  }
+
   render(){
     return (
       <div>
@@ -70,7 +82,8 @@ class App extends React.Component {
             user={this.state.user}/>}  />
           <Route path='/accounts' render={()=><Accounts
             user={this.state.user}
-            accounts={this.state.accounts}/>} />
+            accounts={this.state.accounts}
+            transactions={this.state.transactions}/>} />
           <Route component={Error404} />
         </Switch>
       </div>
