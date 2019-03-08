@@ -8,7 +8,6 @@ function AddAccountForm({showAddAccountForm, toggleAccountForm, user}) {
   const db = firebase.database();
 
   function handleAddAccount(e){
-    console.log(user);
     e.preventDefault();
     const accounts = db.ref('Accounts/' + user.uid);
     toggleAccountForm();
