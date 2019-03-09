@@ -35,6 +35,7 @@ class AddTransactionForm extends React.Component {
 
   handleAddTransaction(e) {
     e.preventDefault();
+    console.log(_type.value);
     this.props.toggleAddTransactionForm();
     const db = firebase.database();
     const transactions = db.ref('Transactions/' + this.props.user.uid);
@@ -52,6 +53,20 @@ class AddTransactionForm extends React.Component {
   }
 
   updateCategory(){
+    let newName;
+    let newBudget;
+    let newActivity;
+    let category = firebase.database().ref('Categories/' + this.props.user.uid + '/' + _category.value);
+    category.on('value', (snap) => {
+      newName = snap.val().name;
+      newBudget = snap.val().budget;
+      newActivity = (_type.value === 'expense') ? (parseInt(snap.val().activity) - parseInt(_amount.value)) : (parseInt(snap.val().activity) + parseInt(_amount.value));
+    });
+    firebase.database().ref('Categories/' + this.props.user.uid + '/' + _category.value).set({
+      name: newName,
+      budget: newBudget,
+      activity: newActivity
+    });
   }
 
   updateAccount(){
@@ -85,6 +100,8 @@ class AddTransactionForm extends React.Component {
               <label for='amount'>Amount</label>
               <input
                 type='number'
+                step='any'
+                min='0'
                 ref={(input)=>{_amount=input;}}
               />
             </div>
@@ -116,23 +133,20 @@ class AddTransactionForm extends React.Component {
                 {Object.keys(this.state.categoryList).map(categoryId =>
                   <option value={categoryId} key={categoryId}>{this.state.categoryList[categoryId].name}</option>
                 )}
-                <option value="groceries">Groceries</option>
-                <option value="transportation">Transportation</option>
-                <option value="rent">Rent</option>
               </select>
             </div>
             <div className='form-group'>
               <label for='type'>Type</label>
               <select ref={(input) => {_type = input;}} required>
-                <option value="expense">Expense</option>
-                <option value="income">Income</option>
+                <option value='expense'>Expense</option>
+                <option value='income'>Income</option>
               </select>
             </div>
             <div className='form-group'>
               <label for='cleared'>Cleared?</label>
               <select ref={(input) => {_cleared = input;}} required>
-                <option value="Cleared">Yes</option>
-                <option value="Uncleared">No</option>
+                <option value='Cleared'>Yes</option>
+                <option value='Uncleared'>No</option>
               </select>
             </div>
             <button type='submit'>Add</button>

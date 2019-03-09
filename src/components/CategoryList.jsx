@@ -1,7 +1,6 @@
 import React from 'react';
 import CategoryItem from './CategoryItem';
 import PropTypes from 'prop-types';
-import { v4 } from 'uuid';
 
 function CategoryList({ categories }){
   return(
@@ -11,8 +10,8 @@ function CategoryList({ categories }){
           name={categories[categoryId].name}
           budget={categories[categoryId].budget}
           activity={categories[categoryId].activity}
-          remaining={categories[categoryId].budget - categories[categoryId].activity}
-          key={v4()}/>
+          remaining={parseInt(categories[categoryId].budget) + parseInt(categories[categoryId].activity)}
+          key={categoryId}/>
       )}
     </div>
   );

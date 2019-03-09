@@ -25,7 +25,7 @@ function CategoryItem({name, budget, activity, remaining}) {
           fixedDecimalScale={true}
           prefix={'$'} />
         <div>
-          {remaining > 0 ? (<span className='green'>
+          {remaining >= 0 ? (<span className='green'>
             <NumberFormat
               value={remaining}
               displayType={'text'}
