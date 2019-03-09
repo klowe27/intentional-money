@@ -9,8 +9,57 @@ import Firebase from 'firebase';
 function TransactionItem({date, vendor, amount, category, account, cleared, id, user}) {
 
   function handleRemoveTransaction(id){
+    let category;
+    let type;
+    let amount;
+    let account;
+    let cleared;
     let transaction =  firebase.database().ref('Transactions/' + user.uid + '/' + id);
+    transaction.on('value', (snap) => {
+      category = snap.val().category ;
+      type = snap.val().type ;
+      amount = snap.val().amount ;
+      account = snap.val().account ;
+      cleared = snap.val().cleared ;
+    });
+    updateCategory(category, type, amount);
+    updateAccount(account, type, amount, cleared);
     transaction.remove();
+  }
+
+  function updateCategory(category, type, amount) {
+    console.log(category);
+    let newName;
+    let newBudget;
+    let newActivity;
+    let currentCategory = firebase.database().ref('Categories/' + user.uid + '/' + category);
+    currentCategory.on('value', (snap) => {
+      newName = snap.val().name;
+      newBudget = snap.val().budget;
+      newActivity = (type !== 'expense') ? (parseInt(snap.val().activity) - parseInt(amount)) : (parseInt(snap.val().activity) + parseInt(amount));
+    });
+    firebase.database().ref('Categories/' + user.uid + '/' + category).set({
+      name: newName,
+      budget: newBudget,
+      activity: newActivity
+    });
+  }
+
+  function updateAccount(account, type, amount, cleared) {
+    console.log(account);
+    if (cleared === 'Cleared') {
+      let newName;
+      let newBalance;
+      let currentAccount = firebase.database().ref('Accounts/' + user.uid + '/' + account);
+      currentAccount.on('value', (snap) => {
+        newName = snap.val().name;
+        newBalance = (type !== 'expense') ? (parseInt(snap.val().balance) - parseInt(amount)) : (parseInt(snap.val().balance) + parseInt(amount));
+      });
+      firebase.database().ref('Accounts/' + user.uid + '/' + account).set({
+        name: newName,
+        balance: newBalance
+      });
+    }
   }
 
   return(
