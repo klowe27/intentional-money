@@ -32,15 +32,15 @@ function CategoryItem({name, budget, activity, remaining}) {
               fixedDecimalScale={true}
               prefix={'$'} />
           </span> ) :
-          (<span className='red'>
-            <NumberFormat
-              value={remaining}
-              displayType={'text'}
-              thousandSeparator={true}
-              decimalScale={2}
-              fixedDecimalScale={true}
-              prefix={'$'} />
-          </span>)}
+            (<span className='red'>
+              <NumberFormat
+                value={remaining}
+                displayType={'text'}
+                thousandSeparator={true}
+                decimalScale={2}
+                fixedDecimalScale={true}
+                prefix={'$'} />
+            </span>)}
         </div>
       </div>
       <hr/>

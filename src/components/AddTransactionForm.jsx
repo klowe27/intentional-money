@@ -19,6 +19,7 @@ class AddTransactionForm extends React.Component {
       categoryList: {}
     };
     this.handleAddTransaction = this.handleAddTransaction.bind(this);
+    this.handleCloseForm = this.handleCloseForm.bind(this);
     this.updateCategory = this.updateCategory.bind(this);
     this.updateAccount = this.updateAccount.bind(this);
   }
@@ -28,8 +29,13 @@ class AddTransactionForm extends React.Component {
     this.setState({ categoryList: nextProps.categories });
   }
 
+  handleCloseForm(){
+    this.props.toggleAddTransactionForm();
+  }
+
   handleAddTransaction(e) {
     e.preventDefault();
+    this.props.toggleAddTransactionForm();
     const db = firebase.database();
     const transactions = db.ref('Transactions/' + this.props.user.uid);
     transactions.push({
@@ -43,11 +49,9 @@ class AddTransactionForm extends React.Component {
     });
     this.updateCategory();
     this.updateAccount();
-    this.props.toggleAddTransactionForm();
   }
 
   updateCategory(){
-    console.log('Category');
   }
 
   updateAccount(){
@@ -62,7 +66,7 @@ class AddTransactionForm extends React.Component {
       firebase.database().ref('Accounts/' + this.props.user.uid + '/' + _account.value).set({
         name: newName,
         balance: newBalance
-      });;
+      });
     }
   }
 
@@ -75,7 +79,7 @@ class AddTransactionForm extends React.Component {
       return (
         <div className='modal-background'>
           <form onSubmit={this.handleAddTransaction} className='form'>
-            <span className='close' onClick={this.handleAddTransaction}>x</span>
+            <span className='close' onClick={this.handleCloseForm}>x</span>
             <h2>Add Transaction</h2>
             <div className='form-group'>
               <label for='amount'>Amount</label>

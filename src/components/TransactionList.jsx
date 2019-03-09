@@ -27,7 +27,7 @@ class TransactionList extends React.Component {
   }
 
   getCategoryNameByKey(key){
-    let categoryName;;
+    let categoryName;
     let category =  firebase.database().ref('Categories/' + this.props.user.uid + '/' + key);
     category.on('value', (snap) => {
       categoryName = snap.val().name;

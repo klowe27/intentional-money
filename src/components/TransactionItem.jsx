@@ -27,7 +27,7 @@ function TransactionItem({date, vendor, amount, category, account, cleared, id, 
           prefix={'$'} />
         <div>{(cleared !== 'cleared') ? <p>c</p> : <p>n</p>}</div>
         <div><span className='edit'>e</span></div>
-        <div onClick={() => { handleRemoveTransaction(id) }} className='delete'>x</div>
+        <div onClick={() => { handleRemoveTransaction(id); }} className='delete'>x</div>
       </div>
       <hr/>
     </div>

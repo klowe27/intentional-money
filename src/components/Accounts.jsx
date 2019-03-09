@@ -4,7 +4,6 @@ import AddAccountForm from './AddAccountForm';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import Firebase from 'firebase';
-import NumberFormat from 'react-number-format';
 
 class Accounts extends React.Component {
   constructor(props){

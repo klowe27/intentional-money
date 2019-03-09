@@ -1,7 +1,6 @@
 import React from 'react';
 import CategoryItem from './CategoryItem';
 import PropTypes from 'prop-types';
-import { categoryListData } from './assets/sample-content.js';
 import { v4 } from 'uuid';
 
 function CategoryList({ categories }){
@@ -21,6 +20,6 @@ function CategoryList({ categories }){
 
 CategoryList.propTypes = {
   categories: PropTypes.object
-}
+};
 
 export default CategoryList;
