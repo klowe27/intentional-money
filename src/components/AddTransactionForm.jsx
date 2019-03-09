@@ -35,7 +35,6 @@ class AddTransactionForm extends React.Component {
 
   handleAddTransaction(e) {
     e.preventDefault();
-    console.log(_type.value);
     this.props.toggleAddTransactionForm();
     const db = firebase.database();
     const transactions = db.ref('Transactions/' + this.props.user.uid);
@@ -103,6 +102,7 @@ class AddTransactionForm extends React.Component {
                 step='any'
                 min='0'
                 ref={(input)=>{_amount=input;}}
+                required
               />
             </div>
             <div className='form-group'>
@@ -110,6 +110,7 @@ class AddTransactionForm extends React.Component {
               <input
                 type='date'
                 ref={(input)=>{_transactionDate=input;}}
+                required
               />
             </div>
             <div className='form-group'>
@@ -117,6 +118,7 @@ class AddTransactionForm extends React.Component {
               <input
                 type='text'
                 ref={(input)=>{_vendor=input;}}
+                required
               />
             </div>
             <div className='form-group'>

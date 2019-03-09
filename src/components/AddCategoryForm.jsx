@@ -32,6 +32,7 @@ function AddCategoryForm({showAddCategoryForm, toggleCategoryForm, user}) {
             <input
               type='text'
               ref={(input)=>{_name=input;}}
+              required
             />
           </div>
           <div className='form-group'>
@@ -39,6 +40,7 @@ function AddCategoryForm({showAddCategoryForm, toggleCategoryForm, user}) {
             <input
               type='number'
               ref={(input)=>{_budget=input;}}
+              required
             />
           </div>
           <button type='submit'>Add</button>
