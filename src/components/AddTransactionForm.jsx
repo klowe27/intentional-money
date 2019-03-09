@@ -59,7 +59,7 @@ class AddTransactionForm extends React.Component {
     category.on('value', (snap) => {
       newName = snap.val().name;
       newBudget = snap.val().budget;
-      newActivity = (_type.value === 'expense') ? (parseInt(snap.val().activity) - parseInt(_amount.value)) : (parseInt(snap.val().activity) + parseInt(_amount.value));
+      newActivity = (_type.value === 'expense') ? (parseFloat(snap.val().activity) - parseFloat(_amount.value)) : (parseFloat(snap.val().activity) + parseFloat(_amount.value));
     });
     firebase.database().ref('Categories/' + this.props.user.uid + '/' + _category.value).set({
       name: newName,
@@ -75,7 +75,7 @@ class AddTransactionForm extends React.Component {
       let account = firebase.database().ref('Accounts/' + this.props.user.uid + '/' + _account.value);
       account.on('value', (snap) => {
         newName = snap.val().name;
-        newBalance = (_type.value === 'expense') ? (parseInt(snap.val().balance) - parseInt(_amount.value)) : (parseInt(snap.val().balance) + parseInt(_amount.value));
+        newBalance = (_type.value === 'expense') ? (parseFloat(snap.val().balance) - parseFloat(_amount.value)) : (parseFloat(snap.val().balance) + parseFloat(_amount.value));
       });
       firebase.database().ref('Accounts/' + this.props.user.uid + '/' + _account.value).set({
         name: newName,
@@ -99,8 +99,8 @@ class AddTransactionForm extends React.Component {
               <label for='amount'>Amount</label>
               <input
                 type='number'
-                step='any'
-                min='0'
+                min='0.00'
+                step='0.001'
                 ref={(input)=>{_amount=input;}}
                 required
               />

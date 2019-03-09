@@ -4,6 +4,7 @@ import NumberFormat from 'react-number-format';
 import './assets/styles/AccountItem.css';
 
 function AccountItem({name, balance}){
+  console.log(balance);
   return(
     <div className='accountItem'>
       <h2 className='balance'>
@@ -22,7 +23,7 @@ function AccountItem({name, balance}){
 
 AccountItem.propTypes = {
   name: PropTypes.string,
-  balance: PropTypes.number
+  balance: PropTypes.string
 }
 
 export default AccountItem;

@@ -10,7 +10,7 @@ function AccountList({accounts}){
       {Object.keys(accounts).map(accountId =>
         <AccountItem
           name={accounts[accountId].name}
-          balance={parseInt(accounts[accountId].balance)}
+          balance={accounts[accountId].balance}
           key={accountId}
         />
       )}

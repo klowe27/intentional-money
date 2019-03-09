@@ -2,7 +2,7 @@ import React from 'react';
 import CategoryItem from './CategoryItem';
 import PropTypes from 'prop-types';
 
-function CategoryList({ categories }){
+function CategoryList({ categories, user }){
   return(
     <div>
       {Object.keys(categories).map(categoryId =>
@@ -10,7 +10,9 @@ function CategoryList({ categories }){
           name={categories[categoryId].name}
           budget={categories[categoryId].budget}
           activity={categories[categoryId].activity}
-          remaining={parseInt(categories[categoryId].budget) + parseInt(categories[categoryId].activity)}
+          remaining={parseFloat(categories[categoryId].budget) + parseFloat(categories[categoryId].activity)}
+          user={user}
+          id={categoryId}
           key={categoryId}/>
       )}
     </div>
@@ -18,7 +20,8 @@ function CategoryList({ categories }){
 }
 
 CategoryList.propTypes = {
-  categories: PropTypes.object
+  categories: PropTypes.object,
+  user: PropTypes.object
 };
 
 export default CategoryList;

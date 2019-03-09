@@ -38,7 +38,7 @@ function AddCategoryForm({showAddCategoryForm, toggleCategoryForm, user}) {
           <div className='form-group'>
             <label from='budget'>Budget</label>
             <input
-              type='number'
+              type='text'
               ref={(input)=>{_budget=input;}}
               required
             />

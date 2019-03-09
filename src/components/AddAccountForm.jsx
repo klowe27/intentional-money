@@ -9,6 +9,7 @@ function AddAccountForm({showAddAccountForm, toggleAccountForm, user}) {
 
   function handleAddAccount(e){
     e.preventDefault();
+    console.log('addAccount', _balance.value)
     const accounts = db.ref('Accounts/' + user.uid);
     toggleAccountForm();
     accounts.push({
@@ -31,7 +32,6 @@ function AddAccountForm({showAddAccountForm, toggleAccountForm, user}) {
             <label from='name'>Name</label>
             <input
               type='text'
-              placeholder='Checking, for example'
               ref={(input)=>{_name=input;}}
               required
             />
@@ -40,7 +40,8 @@ function AddAccountForm({showAddAccountForm, toggleAccountForm, user}) {
             <label from='balance'>Balance</label>
             <input
               type='number'
-              step='any'
+              min='0.00'
+              step='0.001'
               ref={(input)=>{_balance=input;}}
               required
             />

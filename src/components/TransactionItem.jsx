@@ -53,7 +53,7 @@ function TransactionItem({date, vendor, amount, category, account, cleared, id, 
       let currentAccount = firebase.database().ref('Accounts/' + user.uid + '/' + account);
       currentAccount.on('value', (snap) => {
         newName = snap.val().name;
-        newBalance = (type !== 'expense') ? (parseInt(snap.val().balance) - parseInt(amount)) : (parseInt(snap.val().balance) + parseInt(amount));
+        newBalance = (type !== 'expense') ? (parseFloat(snap.val().balance) - parseFloat(amount)) : (parseFloat(snap.val().balance) + parseFloat(amount));
       });
       firebase.database().ref('Accounts/' + user.uid + '/' + account).set({
         name: newName,
@@ -70,7 +70,7 @@ function TransactionItem({date, vendor, amount, category, account, cleared, id, 
         <div>{category}</div>
         <div>{account}</div>
         <NumberFormat
-          value={parseInt(amount)}
+          value={parseFloat(amount)}
           displayType={'text'}
           thousandSeparator={true}
           decimalScale={2}
@@ -88,7 +88,7 @@ function TransactionItem({date, vendor, amount, category, account, cleared, id, 
 TransactionItem.propTypes = {
   date: PropTypes.string,
   vendor: PropTypes.string,
-  amount: PropTypes.number,
+  amount: PropTypes.string,
   category: PropTypes.string,
   account: PropTypes.string,
   cleared: PropTypes.string,

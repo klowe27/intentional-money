@@ -42,7 +42,9 @@ class Budget extends React.Component {
           <div></div>
         </div>
         <CategoryList
-          categories={this.state.categories}/>
+          categories={this.state.categories}
+          user={this.props.user}
+        />
         <Button
           action={this.toggleCategoryForm}
           name='+ category'
