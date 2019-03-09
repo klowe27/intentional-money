@@ -18,6 +18,8 @@ class AddTransactionForm extends React.Component {
       accountList: {}
     };
     this.handleAddTransaction = this.handleAddTransaction.bind(this);
+    this.updateCategory = this.updateCategory.bind(this);
+    this.updateAccount = this.updateAccount.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,7 +39,29 @@ class AddTransactionForm extends React.Component {
       type: _type.value,
       cleared: _cleared.value
     });
+    this.updateCategory();
+    this.updateAccount();
     this.props.toggleAddTransactionForm();
+  }
+
+  updateCategory(){
+    console.log('Category');
+  }
+
+  updateAccount(){
+    if (_type.value === 'true' && _cleared.value === 'Cleared') {
+      let newName;
+      let newBalance;
+      let account = firebase.database().ref('Accounts/' + this.props.user.uid + '/' + _account.value);
+      account.on('value', (snap) => {
+        newName = snap.val().name;
+        newBalance = (snap.val().balance - _amount.value);
+      });
+      firebase.database().ref('Accounts/' + this.props.user.uid + '/' + _account.value).set({
+        name: newName,
+        balance: newBalance
+      });;
+    }
   }
 
   render() {
