@@ -87,7 +87,8 @@ class App extends React.Component {
           user={this.state.user}
           login={this.login}
           logout={this.logout}
-          accounts={this.state.accounts}/>
+          accounts={this.state.accounts}
+          categories={this.state.categories}/>
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/budget' render={()=><Budget

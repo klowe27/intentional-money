@@ -15,7 +15,8 @@ class AddTransactionForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      accountList: {}
+      accountList: {},
+      categoryList: {}
     };
     this.handleAddTransaction = this.handleAddTransaction.bind(this);
     this.updateCategory = this.updateCategory.bind(this);
@@ -24,6 +25,7 @@ class AddTransactionForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({ accountList: nextProps.accounts });
+    this.setState({ categoryList: nextProps.categories });
   }
 
   handleAddTransaction(e) {
@@ -107,6 +109,9 @@ class AddTransactionForm extends React.Component {
             <div className='form-group'>
               <label for='category'>Category</label>
               <select ref={(input) => {_category = input;}} required>
+                {Object.keys(this.state.categoryList).map(categoryId =>
+                  <option value={categoryId} key={categoryId}>{this.state.categoryList[categoryId].name}</option>
+                )}
                 <option value="groceries">Groceries</option>
                 <option value="transportation">Transportation</option>
                 <option value="rent">Rent</option>
@@ -115,7 +120,6 @@ class AddTransactionForm extends React.Component {
             <div className='form-group'>
               <label for='type'>Type</label>
               <select ref={(input) => {_type = input;}} required>
-                <option value=""></option>
                 <option value="expense">Expense</option>
                 <option value="income">Income</option>
               </select>
@@ -123,7 +127,6 @@ class AddTransactionForm extends React.Component {
             <div className='form-group'>
               <label for='cleared'>Cleared?</label>
               <select ref={(input) => {_cleared = input;}} required>
-                <option value=""></option>
                 <option value="Cleared">Yes</option>
                 <option value="Uncleared">No</option>
               </select>
@@ -140,6 +143,7 @@ AddTransactionForm.propTypes = {
   showAddTransactionForm: PropTypes.bool,
   toggleAddTransactionForm: PropTypes.func,
   accounts: PropTypes.object,
+  categories: PropTypes.object,
   user: PropTypes.object
 };
 
