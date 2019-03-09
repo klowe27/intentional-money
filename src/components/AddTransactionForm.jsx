@@ -49,13 +49,13 @@ class AddTransactionForm extends React.Component {
   }
 
   updateAccount(){
-    if (_type.value === 'true' && _cleared.value === 'Cleared') {
+    if (_cleared.value === 'Cleared') {
       let newName;
       let newBalance;
       let account = firebase.database().ref('Accounts/' + this.props.user.uid + '/' + _account.value);
       account.on('value', (snap) => {
         newName = snap.val().name;
-        newBalance = (snap.val().balance - _amount.value);
+        newBalance = (_type.value === 'expense') ? (parseInt(snap.val().balance) - parseInt(_amount.value)) : (parseInt(snap.val().balance) + parseInt(_amount.value));
       });
       firebase.database().ref('Accounts/' + this.props.user.uid + '/' + _account.value).set({
         name: newName,
@@ -116,8 +116,8 @@ class AddTransactionForm extends React.Component {
               <label for='type'>Type</label>
               <select ref={(input) => {_type = input;}} required>
                 <option value=""></option>
-                <option value="true">Expense</option>
-                <option value="false">Income</option>
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
               </select>
             </div>
             <div className='form-group'>
