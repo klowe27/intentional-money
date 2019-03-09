@@ -12,6 +12,14 @@ class Homepage extends React.Component{
     };
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state !== nextState) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   componentDidMount(){
     setTimeout(()=>{
       this.setState({showPig:false});

@@ -35,8 +35,8 @@ class Accounts extends React.Component {
     return (
       <div className='container'>
         <h1>Accounts</h1>
-        <div className='form-group dropdown'>
-          <select onChange={this.handleSortBy}>
+        <div className='form-group'>
+          <select className='dropdown' onChange={this.handleSortBy}>
             <option value='all'>All Accounts</option>
             {Object.keys(this.state.accounts).map(accountId =>
               <option value={accountId} key={accountId}>{this.state.accounts[accountId].name} ({this.state.accounts[accountId].balance})</option>

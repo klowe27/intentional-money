@@ -31,28 +31,26 @@ a {
 
 button {
   padding: 14px;
-  border-style: none;
   background-color: #5ba789ff;
   color: white;
   font-weight: lighter;
   font-size: 1.1rem;
-  border-radius: 5px;
   width: 190px;
   margin-top: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 5px 15px rgba(145, 92, 182, .2);
+  border: solid 1px #5ba789ff;
 }
 
 button:hover{
-  background-color: black;
-  color: white;
-  box-shadow: 0 5px 15px rgba(145, 92, 182, .5);
+  background-color: white;
+  color: #5ba789ff;
 }
 
 .transactionButton {
   margin-top: 2px;
-  background-color: white;
-  color: #5ba789ff;
+  background-color: #5ba789ff;
+  color: white;
+  border: solid 1px white;
   padding: 10px;
   width: 120px;
 }
@@ -95,7 +93,7 @@ button:hover{
 label {
   margin-top: 3px;
   font-size: 1.3rem;
-  text-align: right; 
+  text-align: right;
   padding-right: 20px;
 }
 
@@ -116,9 +114,8 @@ select {
 }
 
 .dropdown {
-  margin-bottom: 40px;
-  border: solid 1px gray;
-  border-radius: 5%;
+  margin-bottom: 25px;
+  border: solid 1px	#D0D0D0;
 }
 
 .close {

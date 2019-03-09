@@ -3,6 +3,7 @@ import CategoryList from './CategoryList';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import AddCategoryForm from './AddCategoryForm';
+import './assets/styles/CategoryItem.css';
 
 class Budget extends React.Component {
   constructor(props){
@@ -26,13 +27,19 @@ class Budget extends React.Component {
     return (
       <div className='container'>
         <h1>Budget</h1>
-        <div className='form-group dropdown'>
-          <select onChange={this.handleSortBy}>
+        <div className='form-group'>
+          <select className='dropdown' onChange={this.handleSortBy}>
             <option value='3/19'>March 2019</option>
             <option value='2/19'>February 2019</option>
-            <option value='1/19'>January 2019</option>
-            <option value='12/18'>December 2018</option>
           </select>
+        </div>
+        <div className='categoryRow categoryHeader'>
+          <div>Category</div>
+          <div>Budget</div>
+          <div>Activity</div>
+          <div>Remaining</div>
+          <div></div>
+          <div></div>
         </div>
         <CategoryList
           categories={this.state.categories}/>

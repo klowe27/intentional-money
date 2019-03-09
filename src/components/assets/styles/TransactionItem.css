@@ -1,23 +1,50 @@
 .transactionRow {
   display: grid;
-  grid-template-columns: 2fr 3fr 3fr 3fr 3fr 2fr 1fr 1fr;
+  grid-template-columns: 3fr 4fr 4fr 4fr 3fr 1fr 1fr 1fr;
 }
 
-.edit {
-
+.headerRow {
+  color: black;
+  background-color: #E8E8E8;
+  font-weight: bolder;
+  padding: 7px;
+  font-weight: 300;
+  font-size: 1rem;
+  margin-bottom: 20px;
 }
 
-.delete {
-  border-radius: 50%;
+.status {
+  padding: .3em .8em;
+  border-radius: 10rem;
+  color: white;
+  font-weight: 900;
   text-align: center;
-  width: 18px;
-  border: solid 1px gray;
+  margin-right: 5px;
+  vertical-align: baseline;
+  font-size: 12px;
   color: gray;
-  padding: 0px;
-  margin: 0px;
 }
 
-.delete:hover {
-  border: solid 1px #5ba789ff;
-  color: #5ba789ff;
+.cleared {
+  background-color: #cde4db;
+}
+
+.uncleared {
+  background-color: #E8E8E8;
+}
+
+.icon {
+  float: right;
+}
+
+.icon:hover {
+  opacity: .5;
+}
+
+.penIcon {
+  width: 17px;
+}
+
+.trashIcon {
+  width: 20px;
 }

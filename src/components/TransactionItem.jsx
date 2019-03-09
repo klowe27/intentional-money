@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NumberFormat from 'react-number-format';
+import Trash from './assets/images/trash.svg';
+import Pen from './assets/images/pen.svg';
 import './assets/styles/TransactionItem.css';
 import Firebase from 'firebase';
 
@@ -25,9 +27,9 @@ function TransactionItem({date, vendor, amount, category, account, cleared, id, 
           decimalScale={2}
           fixedDecimalScale={true}
           prefix={'$'} />
-        <div>{(cleared !== 'cleared') ? <p>c</p> : <p>n</p>}</div>
-        <div><span className='edit'>e</span></div>
-        <div onClick={() => { handleRemoveTransaction(id); }} className='delete'>x</div>
+        <div>{(cleared === 'Cleared') ? <div className='status cleared'>C</div> : <div className='status uncleared'>C</div>}</div>
+        <div><img src={Pen} className='icon penIcon'/></div>
+        <div onClick={() => { handleRemoveTransaction(id); }}><img src={Trash} className='icon trashIcon'/></div>
       </div>
       <hr/>
     </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import TransactionItem from './TransactionItem';
 import PropTypes from 'prop-types';
 import Firebase from 'firebase';
+import './assets/styles/TransactionItem.css';
 
 class TransactionList extends React.Component {
   constructor(props){
@@ -38,6 +39,16 @@ class TransactionList extends React.Component {
   render() {
     return(
       <div>
+        <div className='transactionRow headerRow'>
+          <div>Date</div>
+          <div>Vendor</div>
+          <div>Category</div>
+          <div>Account</div>
+          <div>Amount</div>
+          <div>Cleared</div>
+          <div></div>
+          <div></div>
+        </div>
         {Object.keys(this.state.transactions).map(transactiontId =>
           <TransactionItem
             date={this.state.transactions[transactiontId].transactionDate}

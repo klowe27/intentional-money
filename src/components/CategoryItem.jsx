@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './assets/styles/CategoryItem.css';
 import NumberFormat from 'react-number-format';
+import Trash from './assets/images/trash.svg';
+import Pen from './assets/images/pen.svg';
 
 function CategoryItem({name, budget, activity, remaining}) {
   return(
@@ -42,6 +44,8 @@ function CategoryItem({name, budget, activity, remaining}) {
                 prefix={'$'} />
             </span>)}
         </div>
+        <div><img src={Pen} className='icon penIcon'/></div>
+        <div><img src={Trash} className='icon trashIcon'/></div>
       </div>
       <hr/>
     </div>

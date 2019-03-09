@@ -1,6 +1,16 @@
 .categoryRow {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 4fr 4fr 4fr 4fr 1fr 1fr;
+}
+
+.categoryHeader{
+  color: black;
+  background-color: #E8E8E8;
+  font-weight: bolder;
+  padding: 7px;
+  font-weight: 300;
+  font-size: 1rem;
+  margin-bottom: 20px;
 }
 
 .red {
@@ -14,4 +24,3 @@
   padding: .2em .7em;
   border-radius: 10rem;
 }
-  
