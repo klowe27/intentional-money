@@ -53,6 +53,7 @@ class Header extends React.Component {
         <Menu
           showMenu={this.state.showMenu}
           toggleMenu={this.toggleMenu}
+          user={this.props.user}
         />
         <Link to='/'><span className='logoName'><img src={Logo} className='logo'/>Intentional Money</span></Link>
         <div className='addTransactionButton'>

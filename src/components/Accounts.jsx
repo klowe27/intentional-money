@@ -1,4 +1,5 @@
 import React from 'react';
+import AccountList from './AccountList';
 import TransactionList from './TransactionList';
 import AddAccountForm from './AddAccountForm';
 import PropTypes from 'prop-types';
@@ -11,11 +12,9 @@ class Accounts extends React.Component {
     this.state = {
       accounts: {},
       transactions: {},
-      showAddAccountForm: false,
-      sortBy: 'all'
+      showAddAccountForm: false
     };
     this.toggleAccountForm = this.toggleAccountForm.bind(this);
-    this.handleSortBy = this.handleSortBy.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,34 +26,26 @@ class Accounts extends React.Component {
     this.setState({showAddAccountForm: !this.state.showAddAccountForm});
   }
 
-  handleSortBy(e){
-    this.setState({sortBy: e.target.value});
-  }
-
   render() {
     return (
       <div className='container'>
         <h1>Accounts</h1>
-        <div className='form-group'>
-          <select className='dropdown' onChange={this.handleSortBy}>
-            <option value='all'>All Accounts</option>
-            {Object.keys(this.state.accounts).map(accountId =>
-              <option value={accountId} key={accountId}>{this.state.accounts[accountId].name} ({this.state.accounts[accountId].balance})</option>
-            )}
-          </select>
-        </div>
+        <AccountList
+          accounts={this.state.accounts}
+        />
+        <Button
+        action={this.toggleAccountForm}
+        name='+ account'
+        />
+        <AddAccountForm
+        showAddAccountForm={this.state.showAddAccountForm}
+        toggleAccountForm={this.toggleAccountForm}
+        user={this.props.user}
+        />
+        <h2>Transactions</h2>
         <TransactionList
           user={this.props.user}
           transactions={this.state.transactions}/>
-        <Button
-          action={this.toggleAccountForm}
-          name='+ account'
-        />
-        <AddAccountForm
-          showAddAccountForm={this.state.showAddAccountForm}
-          toggleAccountForm={this.toggleAccountForm}
-          user={this.props.user}
-        />
       </div>
     );
   }

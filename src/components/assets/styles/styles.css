@@ -135,3 +135,9 @@ hr {
   border: 0;
   border-top: 1px solid	#D3D3D3;
 }
+
+@media screen and (max-width: 960px) {
+  .container {
+    padding: 50px 10px;
+  }
+}

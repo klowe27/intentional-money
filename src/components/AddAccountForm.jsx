@@ -33,13 +33,16 @@ function AddAccountForm({showAddAccountForm, toggleAccountForm, user}) {
               type='text'
               placeholder='Checking, for example'
               ref={(input)=>{_name=input;}}
+              required
             />
           </div>
           <div className='form-group'>
             <label from='balance'>Balance</label>
             <input
               type='number'
+              step='any'
               ref={(input)=>{_balance=input;}}
+              required
             />
           </div>
           <button type='submit'>Add</button>

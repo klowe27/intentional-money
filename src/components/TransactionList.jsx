@@ -53,7 +53,7 @@ class TransactionList extends React.Component {
           <TransactionItem
             date={this.state.transactions[transactiontId].transactionDate}
             vendor={this.state.transactions[transactiontId].vendor}
-            amount={this.state.transactions[transactiontId].amount}
+            amount={parseInt(this.state.transactions[transactiontId].amount)}
             category={this.getCategoryNameByKey(this.state.transactions[transactiontId].category)}
             account={this.getAccountNameByKey(this.state.transactions[transactiontId].account)}
             cleared={this.state.transactions[transactiontId].cleared}

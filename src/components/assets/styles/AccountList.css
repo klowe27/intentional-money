@@ -1,0 +1,4 @@
+.accountList {
+  display: flex;
+  flex-wrap: wrap;
+}

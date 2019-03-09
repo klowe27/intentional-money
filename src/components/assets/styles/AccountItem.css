@@ -1,0 +1,16 @@
+.accountItem {
+  background-color: #E8E8E8;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 20px;
+  margin-right: 20px;
+  width: 230px;
+}
+
+.balance {
+  margin-bottom: 0px;
+}
+
+.name {
+  margin-top: 3px;
+}
