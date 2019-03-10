@@ -47,6 +47,7 @@ class Accounts extends React.Component {
           user={this.props.user}
           transactions={this.state.transactions}/>
       </div>
+
     );
   }
 }

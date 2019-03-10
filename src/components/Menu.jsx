@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './assets/styles/Menu.css';
 
 
-function Menu({showMenu, toggleMenu, user}) {
+function Menu({showMenu, toggleMenu, user, login, logout}) {
   if (!showMenu) {
     return (
       null
@@ -13,10 +13,11 @@ function Menu({showMenu, toggleMenu, user}) {
     return (
       <div className='menu' onClick={toggleMenu}>
         <div className='menu-top'></div>
-        <img src={user.photoURL} className='userPhoto'/>
+        {user ? <img src={user.photoURL} className='userPhoto'/> : null}
         <Link to='/'><div className='menu-item'>Home</div></Link>
         <Link to='/budget'><div className='menu-item'>Budget</div></Link>
         <Link to='/accounts'><div className='menu-item'>Accounts</div></Link>
+        {user ? <div className='menu-item' onClick={logout}>Log Out</div> : <div onClick={login}>Log In</div>}
       </div>
     );
   }
@@ -25,7 +26,9 @@ function Menu({showMenu, toggleMenu, user}) {
 Menu.propTypes = {
   showMenu: PropTypes.bool,
   toggleMenu: PropTypes.func,
-  user: PropTypes.object
+  user: PropTypes.object,
+  login: PropTypes.func,
+  logout: PropTypes.func
 };
 
 export default Menu;

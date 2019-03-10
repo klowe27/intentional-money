@@ -18,8 +18,6 @@ class Header extends React.Component {
     this.toggleAddTransactionForm = this.toggleAddTransactionForm.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
     this.addTransaction = this.addTransaction.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
   }
 
   toggleMenu(){
@@ -34,15 +32,6 @@ class Header extends React.Component {
     this.setState({showAddTransactionForm: !this.state.showAddTransactionForm});
   }
 
-  handleLogin(){
-    this.props.login();
-  }
-
-  handleLogout(){
-    this.props.logout();
-  }
-
-
   render() {
     return (
       <div className='heading'>
@@ -53,6 +42,8 @@ class Header extends React.Component {
         <Menu
           showMenu={this.state.showMenu}
           toggleMenu={this.toggleMenu}
+          login={this.props.login}
+          logout={this.props.logout}
           user={this.props.user}
         />
         <Link to='/'><span className='logoName'><img src={Logo} className='logo'/>Intentional Money</span></Link>
@@ -63,7 +54,6 @@ class Header extends React.Component {
             name="+ transaction"
           />
         </div>
-        {this.props.user ? <p onClick={this.handleLogout}>Log Out ({this.props.user.displayName})</p> : <p onClick={this.handleLogin}>Log In</p>}
         <AddTransactionForm
           showAddTransactionForm={this.state.showAddTransactionForm}
           toggleAddTransactionForm={this.toggleAddTransactionForm}
