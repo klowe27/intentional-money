@@ -2,7 +2,7 @@ import React from 'react';
 import CategoryItem from './CategoryItem';
 import PropTypes from 'prop-types';
 
-function CategoryList({ categories, transactions, user }){
+function CategoryList({ categories, transactions, user, selectCategory }){
 
   function calculateActivity(categoryId) {
     let activity = 0;
@@ -29,6 +29,7 @@ function CategoryList({ categories, transactions, user }){
             activity={calculateActivity(categoryId)}
             user={user}
             id={categoryId}
+            selectCategory={selectCategory}
             key={categoryId}
           />
         )}
@@ -40,7 +41,8 @@ function CategoryList({ categories, transactions, user }){
 CategoryList.propTypes = {
   categories: PropTypes.object,
   transactions: PropTypes.object,
-  user: PropTypes.object
+  user: PropTypes.object,
+  selectCategory: PropTypes.func
 };
 
 export default CategoryList;

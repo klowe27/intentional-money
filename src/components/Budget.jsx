@@ -3,19 +3,26 @@ import CategoryList from './CategoryList';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import AddCategoryForm from './AddCategoryForm';
+import UpdateCategoryForm from './UpdateCategoryForm';
 import './assets/styles/CategoryItem.css';
 
 class Budget extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      showAddCategoryForm: false
+      showAddCategoryForm: false,
+      selectedCategory: null
     };
     this.toggleCategoryForm = this.toggleCategoryForm.bind(this);
+    this.selectCategory = this.selectCategory.bind(this);
   }
 
   toggleCategoryForm(){
     this.setState({showAddCategoryForm: !this.state.showAddCategoryForm});
+  }
+
+  selectCategory(id){
+    this.setState({selectedCategory: id});
   }
 
   render() {
@@ -40,6 +47,7 @@ class Budget extends React.Component {
           categories={this.props.categories}
           transactions={this.props.transactions}
           user={this.props.user}
+          selectCategory={this.selectCategory}
         />
         <Button
           action={this.toggleCategoryForm}
@@ -50,6 +58,12 @@ class Budget extends React.Component {
           toggleCategoryForm={this.toggleCategoryForm}
           user={this.props.user}
         />
+        {!this.state.selectedCategory ? null :
+        <UpdateCategoryForm
+          selectCategory={this.selectCategory}
+          selectedCategory={this.state.selectedCategory}
+          user={this.props.user}
+        />}
       </div>
     );
   }

@@ -14,7 +14,6 @@ function AddTransactionForm({ showAddTransactionForm, toggleAddTransactionForm, 
   let _test;
   let today = new Date();
   let defaultDay = today.getFullYear() + '-0' + (today.getMonth()+1) + '-' + today.getDate();
-  console.log(defaultDay);
 
   function handleCloseForm(){
     toggleAddTransactionForm();

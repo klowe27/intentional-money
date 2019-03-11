@@ -32,8 +32,8 @@ function TransactionItem({date, vendor, amount, category, account, cleared, id, 
           fixedDecimalScale={true}
           prefix={'$'} />
         <div>{(cleared === 'Cleared') ? <div className='status cleared'>C</div> : <div className='status uncleared'>C</div>}</div>
-        <div onClick={() => { handleUpdateTransaction(); }}><img src={Pen} className='icon penIcon'/></div>
-        <div onClick={() => { handleRemoveTransaction(); }}><img src={Trash} className='icon trashIcon'/></div>
+        <div><img src={Pen} className='icon penIcon' onClick={() => { handleUpdateTransaction(); }}/></div>
+        <div><img src={Trash} className='icon trashIcon' onClick={() => { handleRemoveTransaction(); }}/></div>
       </div>
       <hr/>
     </div>

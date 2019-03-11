@@ -5,11 +5,15 @@ import NumberFormat from 'react-number-format';
 import Trash from './assets/images/trash.svg';
 import Pen from './assets/images/pen.svg';
 
-function CategoryItem({name, budget, activity, id, user}) {
+function CategoryItem({name, budget, activity, id, user, selectCategory}) {
 
-  function handleRemoveCategory(id){
+  function handleRemoveCategory(){
     let category =  firebase.database().ref('Categories/' + user.uid + '/' + id);
     category.remove();
+  }
+
+  function handleSelectCategory(){
+    selectCategory(id);
   }
 
   return(
@@ -50,8 +54,8 @@ function CategoryItem({name, budget, activity, id, user}) {
                 prefix={'$'} />
             </span>)}
         </div>
-        <div><img src={Pen} className='icon penIcon'/></div>
-        <div><img src={Trash} onClick={() => { handleRemoveCategory(id); }} className='icon trashIcon'/></div>
+        <div><img src={Pen} onClick={() => { handleSelectCategory(); }} className='icon penIcon'/></div>
+        <div><img src={Trash} onClick={() => { handleRemoveCategory(); }} className='icon trashIcon'/></div>
       </div>
       <hr/>
     </div>
@@ -63,7 +67,8 @@ CategoryItem.propTypes = {
   budget: PropTypes.number.isRequired,
   activity: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
-  user: PropTypes.object
+  user: PropTypes.object,
+  selectCategory: PropTypes.func
 };
 
 export default CategoryItem;
