@@ -20,10 +20,16 @@
 
 @media screen and (max-width: 768px) {
   .headline {
-    font-size: 50px;
+    font-size: 55px;
   }
   .hero {
-    margin-top: 20%;
+    margin-top: 25%;
     width: 80%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 960px){
+  .headline {
+    font-size: 75px;
   }
 }

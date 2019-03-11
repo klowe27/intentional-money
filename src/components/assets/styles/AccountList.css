@@ -2,3 +2,15 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+@media screen and (max-width: 768px) {
+  .accountList {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 960px){
+  .accountList {
+    justify-content: space-between;
+  }
+}
