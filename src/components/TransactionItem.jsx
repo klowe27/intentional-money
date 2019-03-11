@@ -22,13 +22,16 @@ function TransactionItem({date, vendor, amount, category, account, cleared, id, 
       account = snap.val().account ;
       cleared = snap.val().cleared ;
     });
-    updateCategory(category, type, amount);
     updateAccount(account, type, amount, cleared);
+    updateCategory(category, type, amount);
     transaction.remove();
   }
 
+  function handleUpdateTransaction(id){
+    
+  }
+
   function updateCategory(category, type, amount) {
-    console.log(category);
     let newName;
     let newBudget;
     let newActivity;
@@ -46,7 +49,6 @@ function TransactionItem({date, vendor, amount, category, account, cleared, id, 
   }
 
   function updateAccount(account, type, amount, cleared) {
-    console.log(account);
     if (cleared === 'Cleared') {
       let newName;
       let newBalance;
@@ -77,7 +79,7 @@ function TransactionItem({date, vendor, amount, category, account, cleared, id, 
           fixedDecimalScale={true}
           prefix={'$'} />
         <div>{(cleared === 'Cleared') ? <div className='status cleared'>C</div> : <div className='status uncleared'>C</div>}</div>
-        <div><img src={Pen} className='icon penIcon'/></div>
+        <div onClick={() => { handleUpdateTransaction(id); }}><img src={Pen} className='icon penIcon'/></div>
         <div onClick={() => { handleRemoveTransaction(id); }}><img src={Trash} className='icon trashIcon'/></div>
       </div>
       <hr/>

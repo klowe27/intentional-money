@@ -8,8 +8,8 @@ function AddCategoryForm({showAddCategoryForm, toggleCategoryForm, user}) {
 
   function handleAddCategory(e){
     e.preventDefault();
-    const categories = db.ref('Categories/' + user.uid);
     toggleCategoryForm();
+    const categories = db.ref('Categories/' + user.uid);
     categories.push({
       name: _name.value,
       budget: _budget.value,
@@ -38,7 +38,9 @@ function AddCategoryForm({showAddCategoryForm, toggleCategoryForm, user}) {
           <div className='form-group'>
             <label from='budget'>Budget</label>
             <input
-              type='text'
+              type='number'
+              min='0.00'
+              step='0.001'
               ref={(input)=>{_budget=input;}}
               required
             />

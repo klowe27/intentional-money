@@ -4,7 +4,6 @@ import NumberFormat from 'react-number-format';
 import './assets/styles/AccountItem.css';
 
 function AccountItem({name, balance}){
-  console.log(balance);
   return(
     <div className='accountItem'>
       <h2 className='balance'>

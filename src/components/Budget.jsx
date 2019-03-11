@@ -9,14 +9,9 @@ class Budget extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      showAddCategoryForm: false,
-      categories: {}
+      showAddCategoryForm: false
     };
     this.toggleCategoryForm = this.toggleCategoryForm.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ categories: nextProps.categories});
   }
 
   toggleCategoryForm(){
@@ -42,7 +37,7 @@ class Budget extends React.Component {
           <div></div>
         </div>
         <CategoryList
-          categories={this.state.categories}
+          categories={this.props.categories}
           user={this.props.user}
         />
         <Button

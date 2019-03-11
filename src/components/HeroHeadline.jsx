@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './assets/styles/HeroHeadline.css';
 
 function HeroHeadline(){
-  
+
   return(
     <div className='hero'>
       <div className='headline'>Reach your financial goals.</div>
-      <button className='heroButton'>Start Now</button>
+      <Link to='budget'><button className='heroButton'>Start Now</button></Link>
     </div>
   );
 }

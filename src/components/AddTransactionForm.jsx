@@ -10,34 +10,17 @@ let _type;
 let _cleared;
 let _category;
 
-class AddTransactionForm extends React.Component {
+function AddTransactionForm({ showAddTransactionForm, toggleAddTransactionForm, accounts, categories, user }) {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      accountList: {},
-      categoryList: {}
-    };
-    this.handleAddTransaction = this.handleAddTransaction.bind(this);
-    this.handleCloseForm = this.handleCloseForm.bind(this);
-    this.updateCategory = this.updateCategory.bind(this);
-    this.updateAccount = this.updateAccount.bind(this);
+  function handleCloseForm(){
+    toggleAddTransactionForm();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ accountList: nextProps.accounts });
-    this.setState({ categoryList: nextProps.categories });
-  }
-
-  handleCloseForm(){
-    this.props.toggleAddTransactionForm();
-  }
-
-  handleAddTransaction(e) {
+  function handleAddTransaction(e) {
     e.preventDefault();
-    this.props.toggleAddTransactionForm();
+    toggleAddTransactionForm();
     const db = firebase.database();
-    const transactions = db.ref('Transactions/' + this.props.user.uid);
+    const transactions = db.ref('Transactions/' + user.uid);
     transactions.push({
       transactionDate: _transactionDate.value,
       vendor: _vendor.value,
@@ -47,53 +30,53 @@ class AddTransactionForm extends React.Component {
       type: _type.value,
       cleared: _cleared.value
     });
-    this.updateCategory();
-    this.updateAccount();
+    updateCategory();
+    updateAccount();
   }
 
-  updateCategory(){
+  function updateCategory(){
     let newName;
     let newBudget;
     let newActivity;
-    let category = firebase.database().ref('Categories/' + this.props.user.uid + '/' + _category.value);
+    let category = firebase.database().ref('Categories/' + user.uid + '/' + _category.value);
     category.on('value', (snap) => {
       newName = snap.val().name;
       newBudget = snap.val().budget;
       newActivity = (_type.value === 'expense') ? (parseFloat(snap.val().activity) - parseFloat(_amount.value)) : (parseFloat(snap.val().activity) + parseFloat(_amount.value));
     });
-    firebase.database().ref('Categories/' + this.props.user.uid + '/' + _category.value).set({
+    firebase.database().ref('Categories/' + user.uid + '/' + _category.value).set({
       name: newName,
       budget: newBudget,
       activity: newActivity
     });
   }
 
-  updateAccount(){
+  function updateAccount(){
     if (_cleared.value === 'Cleared') {
       let newName;
       let newBalance;
-      let account = firebase.database().ref('Accounts/' + this.props.user.uid + '/' + _account.value);
+      let account = firebase.database().ref('Accounts/' + user.uid + '/' + _account.value);
       account.on('value', (snap) => {
         newName = snap.val().name;
         newBalance = (_type.value === 'expense') ? (parseFloat(snap.val().balance) - parseFloat(_amount.value)) : (parseFloat(snap.val().balance) + parseFloat(_amount.value));
       });
-      firebase.database().ref('Accounts/' + this.props.user.uid + '/' + _account.value).set({
+      firebase.database().ref('Accounts/' + user.uid + '/' + _account.value).set({
         name: newName,
         balance: newBalance
       });
     }
   }
 
-  render() {
-    if (!this.props.showAddTransactionForm){
+
+    if (!showAddTransactionForm){
       return(
         null
       );
     } else {
       return (
         <div className='modal-background'>
-          <form onSubmit={this.handleAddTransaction} className='form'>
-            <span className='close' onClick={this.handleCloseForm}>x</span>
+          <form onSubmit={handleAddTransaction} className='form'>
+            <span className='close' onClick={handleCloseForm}>x</span>
             <h2>Add Transaction</h2>
             <div className='form-group'>
               <label for='amount'>Amount</label>
@@ -124,16 +107,16 @@ class AddTransactionForm extends React.Component {
             <div className='form-group'>
               <label for='account'>Account</label>
               <select ref={(input) => {_account = input;}} required>
-                {Object.keys(this.state.accountList).map(accountId =>
-                  <option value={accountId} key={accountId}>{this.state.accountList[accountId].name}</option>
+                {Object.keys(accounts).map(accountId =>
+                  <option value={accountId} key={accountId}>{accounts[accountId].name}</option>
                 )}
               </select>
             </div>
             <div className='form-group'>
               <label for='category'>Category</label>
               <select ref={(input) => {_category = input;}} required>
-                {Object.keys(this.state.categoryList).map(categoryId =>
-                  <option value={categoryId} key={categoryId}>{this.state.categoryList[categoryId].name}</option>
+                {Object.keys(categories).map(categoryId =>
+                  <option value={categoryId} key={categoryId}>{categories[categoryId].name}</option>
                 )}
               </select>
             </div>
@@ -156,7 +139,7 @@ class AddTransactionForm extends React.Component {
         </div>
       );
     }
-  }
+
 }
 
 AddTransactionForm.propTypes = {

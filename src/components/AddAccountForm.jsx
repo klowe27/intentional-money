@@ -9,9 +9,8 @@ function AddAccountForm({showAddAccountForm, toggleAccountForm, user}) {
 
   function handleAddAccount(e){
     e.preventDefault();
-    console.log('addAccount', _balance.value)
-    const accounts = db.ref('Accounts/' + user.uid);
     toggleAccountForm();
+    const accounts = db.ref('Accounts/' + user.uid);
     accounts.push({
       name: _name.value,
       balance: _balance.value

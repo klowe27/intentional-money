@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './assets/styles/Bar.css';
 
 function Bar({width, height, left, duration}) {
-
   return(
     <div className='bar'>
       <style jsx>{`
