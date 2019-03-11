@@ -4,7 +4,7 @@ import AccountItem from './AccountItem';
 import './assets/styles/AccountList.css';
 
 
-function AccountList({accounts, transactions, user}){
+function AccountList({accounts, transactions, user, selectAccount}){
 
   function calculateCurrentBalance(accountId){
     let currentBalance = parseFloat(accounts[accountId].balance);
@@ -24,7 +24,7 @@ function AccountList({accounts, transactions, user}){
   if (Object.keys(accounts).length === 0){
     return(
       <div>You have no accounts.</div>
-    )
+    );
   } else {
     return(
       <div className='accountList'>
@@ -35,17 +35,19 @@ function AccountList({accounts, transactions, user}){
             id={accountId}
             user={user}
             key={accountId}
+            selectAccount={selectAccount}
           />
         )}
       </div>
-    )
+    );
   }
 }
 
 AccountList.propTypes = {
   accounts: PropTypes.object,
   transactions: PropTypes.object,
-  user: PropTypes.object
-}
+  user: PropTypes.object,
+  selectAccount: PropTypes.func
+};
 
 export default AccountList;

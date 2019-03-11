@@ -8,24 +8,12 @@ import Firebase from 'firebase';
 
 function TransactionItem({date, vendor, amount, category, account, cleared, id, user}) {
 
-  function handleRemoveTransaction(id){
-    let category;
-    let type;
-    let amount;
-    let account;
-    let cleared;
+  function handleRemoveTransaction(){
     let transaction =  firebase.database().ref('Transactions/' + user.uid + '/' + id);
-    transaction.on('value', (snap) => {
-      category = snap.val().category ;
-      type = snap.val().type ;
-      amount = snap.val().amount ;
-      account = snap.val().account ;
-      cleared = snap.val().cleared ;
-    });
     transaction.remove();
   }
 
-  function handleUpdateTransaction(id){
+  function handleUpdateTransaction(){
 
   }
 
@@ -44,8 +32,8 @@ function TransactionItem({date, vendor, amount, category, account, cleared, id, 
           fixedDecimalScale={true}
           prefix={'$'} />
         <div>{(cleared === 'Cleared') ? <div className='status cleared'>C</div> : <div className='status uncleared'>C</div>}</div>
-        <div onClick={() => { handleUpdateTransaction(id); }}><img src={Pen} className='icon penIcon'/></div>
-        <div onClick={() => { handleRemoveTransaction(id); }}><img src={Trash} className='icon trashIcon'/></div>
+        <div onClick={() => { handleUpdateTransaction(); }}><img src={Pen} className='icon penIcon'/></div>
+        <div onClick={() => { handleRemoveTransaction(); }}><img src={Trash} className='icon trashIcon'/></div>
       </div>
       <hr/>
     </div>

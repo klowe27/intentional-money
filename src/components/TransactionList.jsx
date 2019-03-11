@@ -27,7 +27,7 @@ function TransactionList({user, transactions}) {
   if (Object.keys(transactions).length === 0){
     return(
       <div>You have no transactions.</div>
-    )
+    );
   } else {
     return(
       <div>

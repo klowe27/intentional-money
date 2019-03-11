@@ -5,15 +5,15 @@ import Trash from './assets/images/trash.svg';
 import Pen from './assets/images/pen.svg';
 import './assets/styles/AccountItem.css';
 
-function AccountItem({name, balance, id, user}){
+function AccountItem({name, balance, id, user, selectAccount}){
 
-  function handleRemoveAccount(id){
+  function handleRemoveAccount(){
     let account =  firebase.database().ref('Accounts/' + user.uid + '/' + id);
     account.remove();
   }
 
-  function handleUpdateAccount(id) {
-
+  function handleToggleUpdateForm(){
+    selectAccount(id);
   }
 
   return(
@@ -28,17 +28,18 @@ function AccountItem({name, balance, id, user}){
           prefix={'$'} />
       </h2>
       <p className='name'>{name}</p>
-      <div><img src={Trash} onClick={() => { handleRemoveAccount(id); }} className='icon trashIcon'/></div>
-      <div onClick={() => { handleUpdateAccount(id); }}><img src={Pen} className='icon penIcon'/></div>
+      <div><img src={Trash} onClick={() => { handleRemoveAccount(); }} className='icon trashIcon'/></div>
+      <div><img onClick={() => { handleToggleUpdateForm(); }} src={Pen} className='icon penIcon'/></div>
     </div>
-  )
+  );
 }
 
 AccountItem.propTypes = {
   name: PropTypes.string,
   balance: PropTypes.number,
   id: PropTypes.string,
-  user: PropTypes.object
-}
+  user: PropTypes.object,
+  selectAccount: PropTypes.func
+};
 
 export default AccountItem;

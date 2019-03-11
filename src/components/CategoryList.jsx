@@ -10,7 +10,6 @@ function CategoryList({ categories, transactions, user }){
       let transaction = transactions[transactionId];
       if (categoryId === transaction.category) {
         (transaction.type === 'expense') ? activity -= parseFloat(transaction.amount) : activity += parseFloat(transaction.amount);
-        console.log(activity);
       }
     });
     return activity;
@@ -19,7 +18,7 @@ function CategoryList({ categories, transactions, user }){
   if (Object.keys(categories).length === 0){
     return(
       <div>You have no categories.</div>
-    )
+    );
   } else {
     return(
       <div>
