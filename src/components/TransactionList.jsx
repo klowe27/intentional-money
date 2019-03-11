@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Firebase from 'firebase';
 import './assets/styles/TransactionItem.css';
 
-function TransactionList({user, transactions}) {
+function TransactionList({user, transactions, selectTransaction}) {
 
   function getAccountNameByKey(key){
     let accountName;
@@ -51,6 +51,7 @@ function TransactionList({user, transactions}) {
             cleared={transactions[transactiontId].cleared}
             key={transactiontId}
             id={transactiontId}
+            selectTransaction={selectTransaction}
             user={user}/>
         )}
       </div>
@@ -60,7 +61,8 @@ function TransactionList({user, transactions}) {
 
 TransactionList.propTypes = {
   user: PropTypes.object,
-  transactions: PropTypes.object
+  transactions: PropTypes.object,
+  selectTransaction: PropTypes.func
 };
 
 export default TransactionList;

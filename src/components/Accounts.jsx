@@ -3,6 +3,7 @@ import AccountList from './AccountList';
 import TransactionList from './TransactionList';
 import AddAccountForm from './AddAccountForm';
 import UpdateAccountForm from './UpdateAccountForm';
+import UpdateTransactionForm from './UpdateTransactionForm';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import Firebase from 'firebase';
@@ -12,10 +13,12 @@ class Accounts extends React.Component {
     super(props);
     this.state = {
       showAddAccountForm: false,
-      selectedAccount: null
+      selectedAccount: null,
+      selectedTransaction: null,
     };
     this.toggleAccountForm = this.toggleAccountForm.bind(this);
     this.selectAccount = this.selectAccount.bind(this);
+    this.selectTransaction = this.selectTransaction.bind(this);
   }
 
   toggleAccountForm(){
@@ -24,6 +27,10 @@ class Accounts extends React.Component {
 
   selectAccount(id){
     this.setState({selectedAccount: id});
+  }
+
+  selectTransaction(id){
+    this.setState({selectedTransaction: id});
   }
 
   render() {
@@ -40,21 +47,31 @@ class Accounts extends React.Component {
           action={this.toggleAccountForm}
           name='+ account'
         />
+        {!this.state.showAddAccountForm ? null:
         <AddAccountForm
-          showAddAccountForm={this.state.showAddAccountForm}
           toggleAccountForm={this.toggleAccountForm}
           user={this.props.user}
-        />
+        />}
+        {!this.state.selectedAccount ? null :
         <UpdateAccountForm
           selectAccount={this.selectAccount}
           selectedAccount={this.state.selectedAccount}
           user={this.props.user}
-        />
+        />}
         <h2>Transactions</h2>
         <TransactionList
           user={this.props.user}
           transactions={this.props.transactions}
+          selectTransaction={this.selectTransaction}
         />
+        {!this.state.selectedTransaction ? null :
+        <UpdateTransactionForm
+          selectTransaction={this.selectTransaction}
+          selectedTransaction={this.state.selectedTransaction}
+          accounts={this.props.accounts}
+          categories={this.props.categories}
+          user={this.props.user}
+        />}
       </div>
 
     );
@@ -64,7 +81,8 @@ class Accounts extends React.Component {
 Accounts.propTypes = {
   user: PropTypes.object,
   accounts: PropTypes.object,
-  transactions: PropTypes.object
+  transactions: PropTypes.object,
+  categories: PropTypes.object
 };
 
 export default Accounts;

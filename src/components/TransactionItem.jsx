@@ -6,7 +6,7 @@ import Pen from './assets/images/pen.svg';
 import './assets/styles/TransactionItem.css';
 import Firebase from 'firebase';
 
-function TransactionItem({date, vendor, amount, category, account, cleared, id, user}) {
+function TransactionItem({date, vendor, amount, category, account, cleared, id, user, selectTransaction}) {
 
   function handleRemoveTransaction(){
     let transaction =  firebase.database().ref('Transactions/' + user.uid + '/' + id);
@@ -14,7 +14,7 @@ function TransactionItem({date, vendor, amount, category, account, cleared, id, 
   }
 
   function handleUpdateTransaction(){
-
+    selectTransaction(id);
   }
 
   return(
@@ -48,7 +48,8 @@ TransactionItem.propTypes = {
   account: PropTypes.string,
   cleared: PropTypes.string,
   id: PropTypes.string,
-  user: PropTypes.object
+  user: PropTypes.object,
+  selectTransaction: PropTypes.func
 };
 
 export default TransactionItem;

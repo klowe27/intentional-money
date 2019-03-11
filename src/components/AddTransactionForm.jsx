@@ -2,15 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Firebase from 'firebase';
 
-let _amount;
-let _transactionDate;
-let _vendor;
-let _account;
-let _type;
-let _cleared;
-let _category;
 
 function AddTransactionForm({ showAddTransactionForm, toggleAddTransactionForm, accounts, categories, user }) {
+  let _amount;
+  let _transactionDate;
+  let _vendor;
+  let _account;
+  let _type;
+  let _cleared;
+  let _category;
+  let _test;
+  let today = new Date();
+  let defaultDay = today.getFullYear() + '-0' + (today.getMonth()+1) + '-' + today.getDate();
+  console.log(defaultDay);
 
   function handleCloseForm(){
     toggleAddTransactionForm();
@@ -56,6 +60,7 @@ function AddTransactionForm({ showAddTransactionForm, toggleAddTransactionForm, 
             <label for='transactionDate'>Date</label>
             <input
               type='date'
+              defaultValue={defaultDay}
               ref={(input)=>{_transactionDate=input;}}
               required
             />

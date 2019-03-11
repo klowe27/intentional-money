@@ -17,7 +17,7 @@ function Menu({showMenu, toggleMenu, user, login, logout}) {
         <Link to='/'><div className='menu-item'>Home</div></Link>
         <Link to='/budget'><div className='menu-item'>Budget</div></Link>
         <Link to='/accounts'><div className='menu-item'>Accounts</div></Link>
-        {user ? <div className='menu-item' onClick={logout}>Log Out</div> : <div onClick={login}>Log In</div>}
+        {user ? <div className='menu-item' onClick={logout}>Log Out</div> : <div className='menu-item' onClick={login}>Log In</div>}
       </div>
     );
   }

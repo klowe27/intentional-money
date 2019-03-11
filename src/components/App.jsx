@@ -101,6 +101,7 @@ class App extends React.Component {
             user={this.state.user}
             accounts={this.state.accounts}
             transactions={this.state.transactions}
+            categories={this.state.categories}
           />} />
           <Route component={Error404} />
         </Switch>

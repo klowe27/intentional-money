@@ -21,32 +21,28 @@ function UpdateAccountForm({ selectAccount, selectedAccount, user}) {
     selectAccount(null);
     }
 
-    function handleCloseForm(){
-      selectAccount(null);
-    }
-
-  if (!selectedAccount) {
-    return( null );
-  } else {
-    return(
-      <div className='modal-background'>
-        <form onSubmit={handleUpdateAccount} className='form'>
-          <span className='close' onClick={handleCloseForm}>x</span>
-          <h2>Update Account</h2>
-          <div className='form-group'>
-            <label from='name'>Name</label>
-            <input
-              type='text'
-              defaultValue={currentName}
-              ref={(input)=>{_newName=input;}}
-              required
-            />
-          </div>
-          <button type='submit'>Update</button>
-        </form>
-      </div>
-    );
+  function handleCloseForm(){
+    selectAccount(null);
   }
+
+  return(
+    <div className='modal-background'>
+      <form onSubmit={handleUpdateAccount} className='form'>
+        <span className='close' onClick={handleCloseForm}>x</span>
+        <h2>Update Account</h2>
+        <div className='form-group'>
+          <label from='name'>Name</label>
+          <input
+            type='text'
+            defaultValue={currentName}
+            ref={(input)=>{_newName=input;}}
+            required
+          />
+        </div>
+        <button type='submit'>Update</button>
+      </form>
+    </div>
+  );
 }
 
 UpdateAccountForm.propTypes = {
