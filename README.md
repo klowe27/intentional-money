@@ -14,7 +14,7 @@ This is a budgeting app where users can create a budget and track transactions.
 
 * Component structure:
 
-<img src="src/components/assets/images/structure.png" width="450" title="Component Structure">
+<img src="src/components/assets/images/structure.png" width="600" title="Component Structure">
 * Franz, I didn't use a separate repo for planning. I included my plan and static site all within this repository.
 
 
