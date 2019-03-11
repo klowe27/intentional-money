@@ -25,6 +25,8 @@ class Accounts extends React.Component {
         <h1>Accounts</h1>
         <AccountList
           accounts={this.props.accounts}
+          transactions={this.props.transactions}
+          user={this.props.user}
         />
         <Button
           action={this.toggleAccountForm}

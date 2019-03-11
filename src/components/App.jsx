@@ -88,16 +88,20 @@ class App extends React.Component {
           login={this.login}
           logout={this.logout}
           accounts={this.state.accounts}
-          categories={this.state.categories}/>
+          categories={this.state.categories}
+        />
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/budget' render={()=><Budget
+            categories={this.state.categories}
+            transactions={this.state.transactions}
             user={this.state.user}
-            categories={this.state.categories}/>}  />
+          />}/>
           <Route path='/accounts' render={()=><Accounts
             user={this.state.user}
             accounts={this.state.accounts}
-            transactions={this.state.transactions}/>} />
+            transactions={this.state.transactions}
+          />} />
           <Route component={Error404} />
         </Switch>
       </div>

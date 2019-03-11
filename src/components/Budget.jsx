@@ -38,6 +38,7 @@ class Budget extends React.Component {
         </div>
         <CategoryList
           categories={this.props.categories}
+          transactions={this.props.transactions}
           user={this.props.user}
         />
         <Button
@@ -56,6 +57,7 @@ class Budget extends React.Component {
 
 Budget.propTypes = {
   user: PropTypes.object,
+  transactions: PropTypes.object,
   categories: PropTypes.object
 };
 

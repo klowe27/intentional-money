@@ -22,46 +22,11 @@ function TransactionItem({date, vendor, amount, category, account, cleared, id, 
       account = snap.val().account ;
       cleared = snap.val().cleared ;
     });
-    updateAccount(account, type, amount, cleared);
-    updateCategory(category, type, amount);
     transaction.remove();
   }
 
   function handleUpdateTransaction(id){
-    
-  }
 
-  function updateCategory(category, type, amount) {
-    let newName;
-    let newBudget;
-    let newActivity;
-    let currentCategory = firebase.database().ref('Categories/' + user.uid + '/' + category);
-    currentCategory.on('value', (snap) => {
-      newName = snap.val().name;
-      newBudget = snap.val().budget;
-      newActivity = (type !== 'expense') ? (parseInt(snap.val().activity) - parseInt(amount)) : (parseInt(snap.val().activity) + parseInt(amount));
-    });
-    firebase.database().ref('Categories/' + user.uid + '/' + category).set({
-      name: newName,
-      budget: newBudget,
-      activity: newActivity
-    });
-  }
-
-  function updateAccount(account, type, amount, cleared) {
-    if (cleared === 'Cleared') {
-      let newName;
-      let newBalance;
-      let currentAccount = firebase.database().ref('Accounts/' + user.uid + '/' + account);
-      currentAccount.on('value', (snap) => {
-        newName = snap.val().name;
-        newBalance = (type !== 'expense') ? (parseFloat(snap.val().balance) - parseFloat(amount)) : (parseFloat(snap.val().balance) + parseFloat(amount));
-      });
-      firebase.database().ref('Accounts/' + user.uid + '/' + account).set({
-        name: newName,
-        balance: newBalance
-      });
-    }
   }
 
   return(

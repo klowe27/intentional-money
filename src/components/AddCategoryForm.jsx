@@ -12,8 +12,7 @@ function AddCategoryForm({showAddCategoryForm, toggleCategoryForm, user}) {
     const categories = db.ref('Categories/' + user.uid);
     categories.push({
       name: _name.value,
-      budget: _budget.value,
-      activity: 0
+      budget: _budget.value
     });
   }
 

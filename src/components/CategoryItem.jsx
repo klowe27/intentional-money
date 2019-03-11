@@ -5,7 +5,7 @@ import NumberFormat from 'react-number-format';
 import Trash from './assets/images/trash.svg';
 import Pen from './assets/images/pen.svg';
 
-function CategoryItem({name, budget, activity, remaining, id, user}) {
+function CategoryItem({name, budget, activity, id, user}) {
 
   function handleRemoveCategory(id){
     let category =  firebase.database().ref('Categories/' + user.uid + '/' + id);
@@ -31,9 +31,9 @@ function CategoryItem({name, budget, activity, remaining, id, user}) {
           fixedDecimalScale={true}
           prefix={'$'} />
         <div>
-          {remaining >= 0 ? (<span className='green'>
+          {(budget+activity) >= 0 ? (<span className='green'>
             <NumberFormat
-              value={remaining}
+              value={budget+activity}
               displayType={'text'}
               thousandSeparator={true}
               decimalScale={2}
@@ -42,7 +42,7 @@ function CategoryItem({name, budget, activity, remaining, id, user}) {
           </span> ) :
             (<span className='red'>
               <NumberFormat
-                value={remaining}
+                value={budget+activity}
                 displayType={'text'}
                 thousandSeparator={true}
                 decimalScale={2}
@@ -60,9 +60,8 @@ function CategoryItem({name, budget, activity, remaining, id, user}) {
 
 CategoryItem.propTypes = {
   name: PropTypes.string.isRequired,
-  budget: PropTypes.string.isRequired,
-  activity: PropTypes.string.isRequired,
-  remaining: PropTypes.number.isRequired,
+  budget: PropTypes.number.isRequired,
+  activity: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
   user: PropTypes.object
 };

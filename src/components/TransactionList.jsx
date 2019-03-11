@@ -24,32 +24,38 @@ function TransactionList({user, transactions}) {
     return categoryName;
   }
 
-  return(
-    <div>
-      <div className='transactionRow headerRow'>
-        <div>Date</div>
-        <div>Vendor</div>
-        <div>Category</div>
-        <div>Account</div>
-        <div>Amount</div>
-        <div>Cleared</div>
-        <div></div>
-        <div></div>
+  if (Object.keys(transactions).length === 0){
+    return(
+      <div>You have no transactions.</div>
+    )
+  } else {
+    return(
+      <div>
+        <div className='transactionRow headerRow'>
+          <div>Date</div>
+          <div>Vendor</div>
+          <div>Category</div>
+          <div>Account</div>
+          <div>Amount</div>
+          <div>Cleared</div>
+          <div></div>
+          <div></div>
+        </div>
+        {Object.keys(transactions).map(transactiontId =>
+          <TransactionItem
+            date={transactions[transactiontId].transactionDate}
+            vendor={transactions[transactiontId].vendor}
+            amount={transactions[transactiontId].amount}
+            category={getCategoryNameByKey(transactions[transactiontId].category)}
+            account={getAccountNameByKey(transactions[transactiontId].account)}
+            cleared={transactions[transactiontId].cleared}
+            key={transactiontId}
+            id={transactiontId}
+            user={user}/>
+        )}
       </div>
-      {Object.keys(transactions).map(transactiontId =>
-        <TransactionItem
-          date={transactions[transactiontId].transactionDate}
-          vendor={transactions[transactiontId].vendor}
-          amount={transactions[transactiontId].amount}
-          category={getCategoryNameByKey(transactions[transactiontId].category)}
-          account={getAccountNameByKey(transactions[transactiontId].account)}
-          cleared={transactions[transactiontId].cleared}
-          key={transactiontId}
-          id={transactiontId}
-          user={user}/>
-      )}
-    </div>
-  );
+    );
+  }
 }
 
 TransactionList.propTypes = {
