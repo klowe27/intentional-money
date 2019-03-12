@@ -138,6 +138,21 @@ hr {
 
 @media screen and (max-width: 960px) {
   .container {
-    padding: 50px 10px;
+    padding: 50px 10px 100px 10px;
+  }
+  .transactionButton {
+    position: fixed;
+    bottom: -20px;
+    right: 0;
+    left: 0px;
+    height: auto;
+    width: 100%;
+    border-style: none;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, .9);
+  }
+  .transactionButton:hover {
+    background-color: #5ba789ff;
+    color: white;
   }
 }

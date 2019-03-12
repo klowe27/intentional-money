@@ -28,8 +28,8 @@ function AccountItem({name, balance, id, user, selectAccount}){
           prefix={'$'} />
       </h2>
       <p className='name'>{name}</p>
-      <div><img src={Trash} onClick={() => { handleRemoveAccount(); }} className='icon trashIcon'/></div>
-      <div><img onClick={() => { handleToggleUpdateForm(); }} src={Pen} className='icon penIcon'/></div>
+      <div><img src={Trash} onClick={() => { handleRemoveAccount(); }} className='icon trashIcon accountIcon'/></div>
+      <div><img onClick={() => { handleToggleUpdateForm(); }} src={Pen} className='icon penIcon accountIcon'/></div>
     </div>
   );
 }

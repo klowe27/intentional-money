@@ -7,6 +7,10 @@
   width: 230px;
 }
 
+.accountIcon {
+  margin: 0px 5px 5px 5px;
+}
+
 .balance {
   margin-bottom: 0px;
   color: #5ba789ff;
