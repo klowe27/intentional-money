@@ -15,14 +15,13 @@ This is a budgeting app where users can create a budget and track transactions.
 * Component structure:
 
 <img src="src/components/assets/images/structure.png" width="600" title="Component Structure">
-* Franz, I didn't use a separate repo for planning. I included my plan and static site all within this repository.
 
 
 ## Setup/Installation Requirements
 
 * Clone this project with `git clone https://github.com/klowe27/intentional-money`
 * Run `npm install` to install dependencies
-* To run this project locally, you must first create a Firebase account. Create a firebaseConfig.js file stored in in the root directly, and add your account credentials like this:
+* To run this project locally, you must first create a Firebase account. Create a firebaseConfig.js file stored in in the root directory, and add your account credentials like this:
   ```
   export const firebaseConfig = {
     apiKey: "FIREBASE-API-KEY",
