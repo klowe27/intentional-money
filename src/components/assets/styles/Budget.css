@@ -1,16 +1,17 @@
 .budgetDetails {
-  background-color: #E8E8E8;
+  background-color:	#F8F8F8;
   border-radius: 5px;
   margin: 0 auto;
   margin-bottom: 40px;
   width: 768px;
   padding: 20px;
   text-align: center;
+  border: solid 1px #E8E8E8;
 }
 
 .overviewGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .name {
@@ -20,12 +21,13 @@
 .month {
   margin-top: 0px;
   color: #5ba789ff;
-  font-weight: 600;
+  font-weight: 300;
   margin-bottom: 10px;
+  font-size: 30px;
 }
 
 .budgetLabel {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 @media screen and (max-width: 768px) {

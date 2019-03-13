@@ -49,15 +49,15 @@ class Accounts extends React.Component {
         />
         {!this.state.showAddAccountForm ? null:
         <AddAccountForm
-          toggleAccountForm={this.toggleAccountForm}
-          user={this.props.user}
-        />}
+            toggleAccountForm={this.toggleAccountForm}
+            user={this.props.user}
+          />}
         {!this.state.selectedAccount ? null :
-        <UpdateAccountForm
+          <UpdateAccountForm
           selectAccount={this.selectAccount}
           selectedAccount={this.state.selectedAccount}
           user={this.props.user}
-        />}
+          />}
         <h2>Transactions</h2>
         <TransactionList
           user={this.props.user}
@@ -66,12 +66,12 @@ class Accounts extends React.Component {
         />
         {!this.state.selectedTransaction ? null :
         <UpdateTransactionForm
-          selectTransaction={this.selectTransaction}
-          selectedTransaction={this.state.selectedTransaction}
-          accounts={this.props.accounts}
-          categories={this.props.categories}
-          user={this.props.user}
-        />}
+            selectTransaction={this.selectTransaction}
+            selectedTransaction={this.state.selectedTransaction}
+            accounts={this.props.accounts}
+            categories={this.props.categories}
+            user={this.props.user}
+          />}
       </div>
 
     );

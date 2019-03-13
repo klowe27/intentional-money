@@ -22,7 +22,6 @@ class App extends React.Component {
       accounts: {},
       transactions: {},
       categories: {},
-      categoryNames: {},
       selectedMonth: '2019-03'
     };
     this.login = this.login.bind(this);
@@ -38,9 +37,9 @@ class App extends React.Component {
     Auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user },
-        () => {
-          this.updateUserInformation();
-        });
+          () => {
+            this.updateUserInformation();
+          });
       }
     });
   }
@@ -83,11 +82,9 @@ class App extends React.Component {
   }
 
   getCategories(){
-    console.log(this.state.selectedMonth);
     let newState;
     let userCategories = db.ref('Categories/' + this.state.user.uid);
     let monthBudget = db.ref('Budget/' + this.state.selectedMonth + '/' + this.state.user.uid);
-    let test;
     monthBudget.on('value', (snap) => {
       if(!snap.hasChildren()) {
         userCategories.on('value', (snap) => {

@@ -4,7 +4,7 @@ import Firebase from 'firebase';
 
 
 function AddTransactionForm({ showAddTransactionForm, toggleAddTransactionForm, accounts, categories, user }) {
-  let months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
+  let months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
   let today = new Date();
   let defaultDay = today.getFullYear() + '-' + months[today.getMonth()] + '-' + today.getDate();
   let _amount;
@@ -14,7 +14,6 @@ function AddTransactionForm({ showAddTransactionForm, toggleAddTransactionForm, 
   let _type;
   let _cleared;
   let _category;
-  let _test;
 
   function handleCloseForm(){
     toggleAddTransactionForm();

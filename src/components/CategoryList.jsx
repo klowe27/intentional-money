@@ -4,15 +4,6 @@ import PropTypes from 'prop-types';
 
 function CategoryList({ categories, transactions, user, selectCategory, selectedMonth }){
 
-  function getCategoryNameByKey(key){
-    let categoryName;
-    let category =  firebase.database().ref('Categories/' + user.uid + '/' + key);
-    category.on('value', (snap) => {
-      (snap.val() !== null) ? categoryName = snap.val().name : categoryName = 'Deleted';
-    });
-    return categoryName;
-  }
-
   function calculateActivity(categoryId) {
     let activity = 0;
     Object.keys(transactions).map( transactionId => {
@@ -34,7 +25,7 @@ function CategoryList({ categories, transactions, user, selectCategory, selected
       <div>
         {Object.keys(categories).map(categoryId =>
           <CategoryItem
-            name={getCategoryNameByKey(categoryId)}
+            name={categoryId}
             budget={parseFloat(categories[categoryId].budget)}
             activity={calculateActivity(categoryId)}
             user={user}

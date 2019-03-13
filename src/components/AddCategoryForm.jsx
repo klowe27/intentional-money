@@ -14,7 +14,6 @@ function AddCategoryForm({ toggleCategoryForm, selectedMonth, user}) {
       name: _name.value
     });
     const budget = db.ref('Budget/' + selectedMonth + '/' + user.uid + '/' + categoryId.key);
-    console.log(_budget.value);
     budget.set({
       budget: _budget.value
     });

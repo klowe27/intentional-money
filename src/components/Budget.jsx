@@ -59,7 +59,7 @@ class Budget extends React.Component {
 
   handleMonthOutput(){
     let months = {'01': 'January', '02': 'February', '03': 'March', '04': 'April', '05': 'May', '06': 'June', '07': 'July', '08': 'August', '09': 'September', '10': 'October', '11': 'November', '12': 'December'};
-    let month = this.props.selectedMonth.slice(5, 7)
+    let month = this.props.selectedMonth.slice(5, 7);
     month = months[month];
     let year = this.props.selectedMonth.slice(0, -3);
     return month + ' ' + year;
@@ -82,14 +82,14 @@ class Budget extends React.Component {
           <h2 className='month'>{this.handleMonthOutput()}</h2>
           <div className='overviewGrid'>
             <div className='budgetLabel'><span className='name'>Budgeted:</span>
-            <NumberFormat
-              value={this.handleTotalBudgeted()}
-              displayType={'text'}
-              thousandSeparator={true}
-              decimalScale={2}
-              fixedDecimalScale={true}
-              prefix={'$'} /></div>
-              <div className='budgetLabel'><span className='name'>Activity: </span>
+              <NumberFormat
+                value={this.handleTotalBudgeted()}
+                displayType={'text'}
+                thousandSeparator={true}
+                decimalScale={2}
+                fixedDecimalScale={true}
+                prefix={'$'} /></div>
+            <div className='budgetLabel'><span className='name'>Activity: </span>
               <NumberFormat
                 value={this.handleTotalActivity()}
                 displayType={'text'}
@@ -97,7 +97,7 @@ class Budget extends React.Component {
                 decimalScale={2}
                 fixedDecimalScale={true}
                 prefix={'$'} /></div>
-              <div className='budgetLabel'><span className='name'>Remaining: </span>
+            <div className='budgetLabel'><span className='name'>Remaining: </span>
               <NumberFormat
                 value={this.handleTotalBudgeted()+this.handleTotalActivity()}
                 displayType={'text'}
@@ -128,17 +128,17 @@ class Budget extends React.Component {
         />
         { !this.state.showAddCategoryForm ? null :
         <AddCategoryForm
-          toggleCategoryForm={this.toggleCategoryForm}
-          selectedMonth={this.props.selectedMonth}
-          user={this.props.user}
-        />}
+            toggleCategoryForm={this.toggleCategoryForm}
+            selectedMonth={this.props.selectedMonth}
+            user={this.props.user}
+          />}
         {!this.state.selectedCategory ? null :
         <UpdateCategoryForm
-          selectCategory={this.selectCategory}
-          selectedCategory={this.state.selectedCategory}
-          selectedMonth={this.props.selectedMonth}
-          user={this.props.user}
-        />}
+            selectCategory={this.selectCategory}
+            selectedCategory={this.state.selectedCategory}
+            selectedMonth={this.props.selectedMonth}
+            user={this.props.user}
+          />}
       </div>
     );
   }

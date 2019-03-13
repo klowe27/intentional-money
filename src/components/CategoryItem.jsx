@@ -18,10 +18,19 @@ function CategoryItem({name, budget, activity, id, user, selectCategory, selecte
     selectCategory(id);
   }
 
+  function getCategoryNameByKey(key){
+    let categoryName;
+    let category =  firebase.database().ref('Categories/' + user.uid + '/' + key);
+    category.on('value', (snap) => {
+      (snap.val() !== null) ? categoryName = snap.val().name : categoryName = 'Deleted';
+    });
+    return categoryName;
+  }
+
   return(
     <div>
       <div className='categoryRow'>
-        <div>{name}</div>
+        <div>{getCategoryNameByKey(name)}</div>
         <NumberFormat
           value={budget}
           displayType={'text'}

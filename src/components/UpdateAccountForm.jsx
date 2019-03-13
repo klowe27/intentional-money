@@ -19,7 +19,7 @@ function UpdateAccountForm({ selectAccount, selectedAccount, user}) {
       balance: currentBalance
     });
     selectAccount(null);
-    }
+  }
 
   function handleCloseForm(){
     selectAccount(null);
