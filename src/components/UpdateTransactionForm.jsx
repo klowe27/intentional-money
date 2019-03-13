@@ -48,6 +48,15 @@ function UpdateTransactionForm({ selectTransaction, selectedTransaction, account
     selectTransaction(null);
   }
 
+  function getCategoryNameByKey(key){
+    let categoryName;
+    let category =  firebase.database().ref('Categories/' + user.uid + '/' + key);
+    category.on('value', (snap) => {
+      (snap.val() !== null) ? categoryName = snap.val().name : categoryName = 'Deleted';
+    });
+    return categoryName;
+  }
+
   return (
     <div className='modal-background'>
       <form onSubmit={handleUpdateTransaction} className='form'>
@@ -94,7 +103,7 @@ function UpdateTransactionForm({ selectTransaction, selectedTransaction, account
           <label for='category'>Category</label>
           <select ref={(input) => {_newCategory = input;}} defaultValue={currentCategory} required>
             {Object.keys(categories).map(categoryId =>
-              <option value={categoryId} key={categoryId}>{categories[categoryId].name}</option>
+              <option value={categoryId} key={categoryId}>{getCategoryNameByKey(categoryId)}</option>
             )}
           </select>
         </div>

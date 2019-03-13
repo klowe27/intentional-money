@@ -5,11 +5,13 @@ import NumberFormat from 'react-number-format';
 import Trash from './assets/images/trash.svg';
 import Pen from './assets/images/pen.svg';
 
-function CategoryItem({name, budget, activity, id, user, selectCategory}) {
+function CategoryItem({name, budget, activity, id, user, selectCategory, selectedMonth }) {
 
   function handleRemoveCategory(){
-    let category =  firebase.database().ref('Categories/' + user.uid + '/' + id);
+    let category = firebase.database().ref('Categories/' + user.uid + '/' + id);
     category.remove();
+    let budgetCategory = firebase.database().ref('Budget/' + selectedMonth + '/' + user.uid + '/' + id);
+    budgetCategory.remove();
   }
 
   function handleSelectCategory(){
@@ -63,12 +65,13 @@ function CategoryItem({name, budget, activity, id, user, selectCategory}) {
 }
 
 CategoryItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  budget: PropTypes.number.isRequired,
-  activity: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  budget: PropTypes.number,
+  activity: PropTypes.number,
+  id: PropTypes.string,
   user: PropTypes.object,
-  selectCategory: PropTypes.func
+  selectCategory: PropTypes.func,
+  selectedMonth: PropTypes.string
 };
 
 export default CategoryItem;

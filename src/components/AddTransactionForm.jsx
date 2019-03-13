@@ -20,6 +20,15 @@ function AddTransactionForm({ showAddTransactionForm, toggleAddTransactionForm, 
     toggleAddTransactionForm();
   }
 
+  function getCategoryNameByKey(key){
+    let categoryName;
+    let category =  firebase.database().ref('Categories/' + user.uid + '/' + key);
+    category.on('value', (snap) => {
+      (snap.val() !== null) ? categoryName = snap.val().name : categoryName = 'Deleted';
+    });
+    return categoryName;
+  }
+
   function handleAddTransaction(e) {
     e.preventDefault();
     toggleAddTransactionForm();
@@ -85,7 +94,7 @@ function AddTransactionForm({ showAddTransactionForm, toggleAddTransactionForm, 
             <label for='category'>Category</label>
             <select ref={(input) => {_category = input;}} required>
               {Object.keys(categories).map(categoryId =>
-                <option value={categoryId} key={categoryId}>{categories[categoryId].name}</option>
+                <option value={categoryId} key={categoryId}>{getCategoryNameByKey(categoryId)}</option>
               )}
             </select>
           </div>

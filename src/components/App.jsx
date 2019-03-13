@@ -12,6 +12,7 @@ firebase.initializeApp(firebaseConfig);
 
 const Provider = new firebase.auth.GoogleAuthProvider();
 const Auth = firebase.auth();
+const db = firebase.database();
 
 class App extends React.Component {
   constructor(props) {
@@ -20,22 +21,26 @@ class App extends React.Component {
       user: null,
       accounts: {},
       transactions: {},
-      categories: {}
+      categories: {},
+      categoryNames: {},
+      selectedMonth: '2019-03'
     };
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.getAccounts = this.getAccounts.bind(this);
     this.getTransactions = this.getTransactions.bind(this);
     this.getCategories = this.getCategories.bind(this);
+    this.selectMonth = this.selectMonth.bind(this);
+    this.updateUserInformation = this.updateUserInformation.bind(this);
   }
 
   componentDidMount() {
     Auth.onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ user });
-        this.getAccounts();
-        this.getTransactions();
-        this.getCategories();
+        this.setState({ user },
+        () => {
+          this.updateUserInformation();
+        });
       }
     });
   }
@@ -53,9 +58,15 @@ class App extends React.Component {
     });
   }
 
+  updateUserInformation() {
+    this.getAccounts();
+    this.getTransactions();
+    this.getCategories();
+  }
+
   getAccounts(){
     let newState;
-    let userAccounts = firebase.database().ref('Accounts/' + this.state.user.uid);
+    let userAccounts = db.ref('Accounts/' + this.state.user.uid);
     userAccounts.on('value', (snap) => {
       newState = Object.assign({}, snap.val());
       this.setState({ accounts: newState });
@@ -64,7 +75,7 @@ class App extends React.Component {
 
   getTransactions(){
     let newState;
-    let userTransactions = firebase.database().ref('Transactions/' + this.state.user.uid);
+    let userTransactions = db.ref('Transactions/' + this.state.user.uid);
     userTransactions.on('value', (snap) => {
       newState = Object.assign({}, snap.val());
       this.setState({ transactions: newState });
@@ -72,11 +83,40 @@ class App extends React.Component {
   }
 
   getCategories(){
+    console.log(this.state.selectedMonth);
     let newState;
-    let userCategories = firebase.database().ref('Categories/' + this.state.user.uid);
-    userCategories.on('value', (snap) => {
-      newState = Object.assign({}, snap.val());
-      this.setState({ categories: newState });
+    let userCategories = db.ref('Categories/' + this.state.user.uid);
+    let monthBudget = db.ref('Budget/' + this.state.selectedMonth + '/' + this.state.user.uid);
+    let test;
+    monthBudget.on('value', (snap) => {
+      if(!snap.hasChildren()) {
+        userCategories.on('value', (snap) => {
+          let categories = Object.keys(snap.val());
+          for (let i = 0; i < categories.length; i++) {
+            let budgetCategory = db.ref('Budget/' + this.state.selectedMonth + '/' + this.state.user.uid + '/' + categories[i]);
+            budgetCategory.set({
+              budget: 0
+            });
+          }
+          monthBudget.on('value', (snap) => {
+            newState = Object.assign({}, snap.val());
+            this.setState({ categories: newState });
+          });
+        });
+      } else {
+        monthBudget.on('value', (snap) => {
+          newState = Object.assign({}, snap.val());
+          this.setState({ categories: newState });
+        });
+      }
+    });
+  }
+
+  selectMonth(month){
+    this.setState({
+      selectedMonth: month
+    }, () => {
+      this.getCategories();
     });
   }
 
@@ -96,6 +136,8 @@ class App extends React.Component {
             categories={this.state.categories}
             transactions={this.state.transactions}
             user={this.state.user}
+            selectMonth={this.selectMonth}
+            selectedMonth={this.state.selectedMonth}
           />}/>
           <Route path='/accounts' render={()=><Accounts
             user={this.state.user}

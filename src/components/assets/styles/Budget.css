@@ -1,0 +1,38 @@
+.budgetDetails {
+  background-color: #E8E8E8;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  width: 768px;
+  padding: 20px;
+  text-align: center;
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.name {
+  margin-right: 10px;
+}
+
+.month {
+  margin-top: 0px;
+  color: #5ba789ff;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.budgetLabel {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .budgetDetails {
+    width: 100%;
+  }
+  .overviewGrid {
+    display: block;
+  }
+}

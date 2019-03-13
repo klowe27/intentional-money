@@ -2,13 +2,23 @@ import React from 'react';
 import CategoryItem from './CategoryItem';
 import PropTypes from 'prop-types';
 
-function CategoryList({ categories, transactions, user, selectCategory }){
+function CategoryList({ categories, transactions, user, selectCategory, selectedMonth }){
+
+  function getCategoryNameByKey(key){
+    let categoryName;
+    let category =  firebase.database().ref('Categories/' + user.uid + '/' + key);
+    category.on('value', (snap) => {
+      (snap.val() !== null) ? categoryName = snap.val().name : categoryName = 'Deleted';
+    });
+    return categoryName;
+  }
 
   function calculateActivity(categoryId) {
     let activity = 0;
     Object.keys(transactions).map( transactionId => {
       let transaction = transactions[transactionId];
-      if (categoryId === transaction.category) {
+      let date = transaction.transactionDate;
+      if (categoryId === transaction.category && date.slice(0, -3) === selectedMonth) {
         (transaction.type === 'expense') ? activity -= parseFloat(transaction.amount) : activity += parseFloat(transaction.amount);
       }
     });
@@ -24,12 +34,13 @@ function CategoryList({ categories, transactions, user, selectCategory }){
       <div>
         {Object.keys(categories).map(categoryId =>
           <CategoryItem
-            name={categories[categoryId].name}
+            name={getCategoryNameByKey(categoryId)}
             budget={parseFloat(categories[categoryId].budget)}
             activity={calculateActivity(categoryId)}
             user={user}
             id={categoryId}
             selectCategory={selectCategory}
+            selectedMonth={selectedMonth}
             key={categoryId}
           />
         )}
@@ -42,7 +53,8 @@ CategoryList.propTypes = {
   categories: PropTypes.object,
   transactions: PropTypes.object,
   user: PropTypes.object,
-  selectCategory: PropTypes.func
+  selectCategory: PropTypes.func,
+  selectedMonth: PropTypes.string
 };
 
 export default CategoryList;

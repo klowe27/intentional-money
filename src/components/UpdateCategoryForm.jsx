@@ -1,21 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function UpdateCategoryForm({selectCategory, selectedCategory, user}) {
+function UpdateCategoryForm({selectCategory, selectedCategory, selectedMonth, user}) {
+
   let currentName;
-  let currentBudget;
+  let currentBudgetAmount;
   let _newName = null;
   let _newBudget = null;
-  let currentCategory = firebase.database().ref('Categories/' + user.uid + '/' + selectedCategory);
+  const db = firebase.database();
+  const currentBudget = db.ref('Budget/' + selectedMonth + '/' + user.uid + '/' + selectedCategory);
+  const currentCategory = firebase.database().ref('Categories/' + user.uid + '/' + selectedCategory);
+
   currentCategory.on('value', (snap) => {
     currentName = snap.val().name;
-    currentBudget = snap.val().budget;
+  });
+
+  currentBudget.on('value', (snap) => {
+    currentBudgetAmount = snap.val().budget;
   });
 
   function handleUpdateCategory(e){
     e.preventDefault();
     currentCategory.set({
-      name: _newName.value,
+      name: _newName.value
+    });
+    currentBudget.set({
       budget: _newBudget.value
     });
     selectCategory(null);
@@ -45,7 +54,7 @@ function UpdateCategoryForm({selectCategory, selectedCategory, user}) {
             type='number'
             min='0.00'
             step='0.001'
-            defaultValue={currentBudget}
+            defaultValue={currentBudgetAmount}
             ref={(input)=>{_newBudget=input;}}
             required
           />
@@ -59,6 +68,7 @@ function UpdateCategoryForm({selectCategory, selectedCategory, user}) {
 UpdateCategoryForm.propTypes = {
   selectCategory: PropTypes.func,
   selectedCategory: PropTypes.string,
+  selectedMonth: PropTypes.string,
   user: PropTypes.object
 };
 
