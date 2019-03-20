@@ -6,7 +6,7 @@
 
 ## Description
 
-This is a budgeting app where users can create a budget and track transactions.
+This is a budgeting app where users can create a budget, add accounts and track all transactions. Users can log in using their Google credentials. 
 
 ## Site Plan
 
@@ -45,7 +45,7 @@ If you discover a bug or would like to make a suggestion, email me at kristin.lo
 
 ## Technologies Used
 
-React, Javascript, Webpack, Jest.
+React, Javascript, Firebase, Firebase authentication, Babel, Webpack.
 
 ### License
 
