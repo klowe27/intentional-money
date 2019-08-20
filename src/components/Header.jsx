@@ -35,10 +35,12 @@ class Header extends React.Component {
   render() {
     return (
       <div className='heading'>
+      { this.props.user?
         <MenuTab
           toggleMenu={this.toggleMenu}
           showMenu={this.state.showMenu}
-        />
+        /> : null
+      }
         <Menu
           showMenu={this.state.showMenu}
           toggleMenu={this.toggleMenu}
@@ -61,7 +63,7 @@ class Header extends React.Component {
               className='transactionButton'
               name="Login"
             />
-          </div>}
+          </div> }
         <AddTransactionForm
           showAddTransactionForm={this.state.showAddTransactionForm}
           toggleAddTransactionForm={this.toggleAddTransactionForm}
