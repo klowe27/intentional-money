@@ -47,13 +47,21 @@ class Header extends React.Component {
           user={this.props.user}
         />
         <Link to='/'><span className='logoName'><img src={Logo} className='logo'/>Intentional Money</span></Link>
-        <div className='addTransactionButton'>
+        { this.props.user?
+          <div className='addTransactionButton'>
           <Button
-            action={this.toggleAddTransactionForm}
-            className='transactionButton'
-            name="+ transaction"
+          action={this.toggleAddTransactionForm}
+          className='transactionButton'
+          name="+ transaction"
           />
-        </div>
+          </div> :
+          <div className='addTransactionButton'>
+            <Button
+              action={this.props.login}
+              className='transactionButton'
+              name="Login"
+            />
+          </div>}
         <AddTransactionForm
           showAddTransactionForm={this.state.showAddTransactionForm}
           toggleAddTransactionForm={this.toggleAddTransactionForm}
