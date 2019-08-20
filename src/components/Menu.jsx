@@ -14,7 +14,7 @@ function Menu({showMenu, toggleMenu, user, login, logout}) {
       <div className='menu' onClick={toggleMenu}>
         <div className='menu-top'></div>
         {user ? <img src={user.photoURL} className='userPhoto'/> : null}
-        <Link to='/'><div className='menu-item'>Home</div></Link>
+        <Link to='/about'><div className='menu-item'>Get Started</div></Link>
         <Link to='/budget'><div className='menu-item'>Budget</div></Link>
         <Link to='/accounts'><div className='menu-item'>Accounts</div></Link>
         {user ? <div className='menu-item' onClick={logout}>Log Out</div> : <div className='menu-item' onClick={login}>Log In</div>}

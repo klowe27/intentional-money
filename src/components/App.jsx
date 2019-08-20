@@ -3,6 +3,7 @@ import Header from './Header';
 import Budget from './Budget';
 import Accounts from './Accounts';
 import Homepage from './Homepage';
+import About from './About';
 import Error404 from './Error404';
 import { Switch, Route } from 'react-router-dom';
 import './assets/styles/styles.css';
@@ -142,6 +143,7 @@ class App extends React.Component {
             transactions={this.state.transactions}
             categories={this.state.categories}
           />} />
+          <Route path='/about' render={()=><About />} />
           <Route component={Error404} />
         </Switch>
       </div>

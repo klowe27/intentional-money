@@ -1,0 +1,25 @@
+h1 {
+  padding-top: 50px;
+}
+
+.about-container {
+  width: 50vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+.step {
+  margin-top: 20px;
+  width: 45px;
+  height: 45px;
+  background-color: #5ba789ff;
+  color: white;
+  border-radius: 50%;
+  font-size: 34px;
+  font-weight: lighter;
+}
