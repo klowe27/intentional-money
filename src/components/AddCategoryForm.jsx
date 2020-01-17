@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import firebase from 'firebase';
 
 function AddCategoryForm({ toggleCategoryForm, selectedMonth, user}) {
   let _name = null;

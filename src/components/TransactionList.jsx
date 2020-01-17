@@ -1,7 +1,7 @@
 import React from 'react';
 import TransactionItem from './TransactionItem';
 import PropTypes from 'prop-types';
-import Firebase from 'firebase';
+import firebase from 'firebase';
 import './assets/styles/TransactionItem.css';
 
 function TransactionList({user, transactions, selectTransaction}) {

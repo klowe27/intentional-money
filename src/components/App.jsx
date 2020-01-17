@@ -8,7 +8,7 @@ import Error404 from './Error404';
 import { Switch, Route } from 'react-router-dom';
 import './assets/styles/styles.css';
 import { firebaseConfig } from '../../firebaseConfig';
-import Firebase from 'firebase';
+import firebase from 'firebase';
 firebase.initializeApp(firebaseConfig);
 
 const Provider = new firebase.auth.GoogleAuthProvider();

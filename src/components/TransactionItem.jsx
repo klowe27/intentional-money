@@ -4,7 +4,7 @@ import NumberFormat from 'react-number-format';
 import Trash from './assets/images/trash.svg';
 import Pen from './assets/images/pen.svg';
 import './assets/styles/TransactionItem.css';
-import Firebase from 'firebase';
+import firebase from 'firebase';
 
 function TransactionItem({date, vendor, amount, category, account, cleared, id, user, selectTransaction}) {
 

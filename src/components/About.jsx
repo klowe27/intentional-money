@@ -21,7 +21,7 @@ function About() {
       <h2>Keep things Reconciled</h2>
       <p>Periodically (weekly or monthly) compare your acccount balances in Intentional Money with those in your existing accounts to make sure they match. This ensures you're capturing all of your transactions and your budget accurately reflects your spending.</p>
     </div>
-  )
+  );
 }
 
 export default About;

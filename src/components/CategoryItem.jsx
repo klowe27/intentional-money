@@ -4,6 +4,7 @@ import './assets/styles/CategoryItem.css';
 import NumberFormat from 'react-number-format';
 import Trash from './assets/images/trash.svg';
 import Pen from './assets/images/pen.svg';
+import firebase from 'firebase';
 
 function CategoryItem({name, budget, activity, id, user, selectCategory, selectedMonth }) {
 

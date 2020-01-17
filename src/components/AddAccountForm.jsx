@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Firebase from 'firebase';
+import firebase from 'firebase';
 
 function AddAccountForm({ toggleAccountForm, user}) {
   let _name = null;

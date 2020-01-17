@@ -126,19 +126,8 @@ class Budget extends React.Component {
           action={this.toggleCategoryForm}
           name='+ category'
         />
-        { !this.state.showAddCategoryForm ? null :
-        <AddCategoryForm
-            toggleCategoryForm={this.toggleCategoryForm}
-            selectedMonth={this.props.selectedMonth}
-            user={this.props.user}
-          />}
-        {!this.state.selectedCategory ? null :
-        <UpdateCategoryForm
-            selectCategory={this.selectCategory}
-            selectedCategory={this.state.selectedCategory}
-            selectedMonth={this.props.selectedMonth}
-            user={this.props.user}
-          />}
+        { !this.state.showAddCategoryForm ? null : <AddCategoryForm toggleCategoryForm={this.toggleCategoryForm} selectedMonth={this.props.selectedMonth} user={this.props.user}/>}
+        {!this.state.selectedCategory ? null : <UpdateCategoryForm selectCategory={this.selectCategory} selectedCategory={this.state.selectedCategory} selectedMonth={this.props.selectedMonth} user={this.props.user}/>}
       </div>
     );
   }

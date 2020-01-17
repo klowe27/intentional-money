@@ -34,13 +34,11 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div className='heading'>
-      { this.props.user?
-        <MenuTab
+      <div className='heading'> 
+        { this.props.user? <MenuTab
           toggleMenu={this.toggleMenu}
           showMenu={this.state.showMenu}
-        /> : null
-      }
+        /> : null}
         <Menu
           showMenu={this.state.showMenu}
           toggleMenu={this.toggleMenu}
@@ -51,11 +49,7 @@ class Header extends React.Component {
         <Link to='/'><span className='logoName'><img src={Logo} className='logo'/>Intentional Money</span></Link>
         { this.props.user?
           <div className='addTransactionButton'>
-          <Button
-          action={this.toggleAddTransactionForm}
-          className='transactionButton'
-          name="+ transaction"
-          />
+            <Button action={this.toggleAddTransactionForm} className='transactionButton' name="+ transaction"/>
           </div> :
           <div className='addTransactionButton'>
             <Button
