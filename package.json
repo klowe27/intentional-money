@@ -21,7 +21,7 @@
   "homepage": "https://github.com/epicodus-lessons/react-help-queue-example#readme",
   "dependencies": {
     "firebase": "^7.7.0",
-    "moment": "^2.18.1",
+    "moment": "^2.29.4",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
